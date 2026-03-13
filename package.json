@@ -4,9 +4,8 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "^14"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "dependencies": {
     "clsx": "^2",
