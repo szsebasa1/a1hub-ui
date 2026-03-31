@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./car
 
 import { cn } from "./utils"
 
+const numberFormatter = new Intl.NumberFormat()
+
 type BarDatum = {
   label: string
   value: number
@@ -19,7 +21,7 @@ export function SimpleBarChart({
   title,
   description,
   items,
-  formatter = (value) => value.toLocaleString(),
+  formatter = (value) => numberFormatter.format(value),
   barClassName,
 }: SimpleBarChartProps) {
   const maxValue = Math.max(...items.map((item) => item.value), 1)

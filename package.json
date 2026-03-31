@@ -8,11 +8,11 @@
     "react-dom": "^19"
   },
   "dependencies": {
-    "clsx": "^2",
-    "tailwind-merge": "^2",
     "class-variance-authority": "^0.7.1",
-    "radix-ui": "^1.4.3",
+    "clsx": "^2",
     "lucide-react": "^0.577.0",
-    "react-hook-form": "^7.71.2"
+    "radix-ui": "^1.4.3",
+    "react-hook-form": "^7.71.2",
+    "tailwind-merge": "^2"
   }
 }

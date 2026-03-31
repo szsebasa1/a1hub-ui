@@ -3,6 +3,7 @@ export * from './card'
 export * from "./dialog"
 export * from "./form"
 export * from "./input"
+export * from "./icon"
 export * from "./password-input"
 export * from "./table"
 export * from "./activity-list"
