@@ -904,7 +904,8 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                       }}
                     >
                       <span className="flex min-w-0 items-center gap-2">
-                        <Icon icon={Globe} size="sm" className="text-cyan-600" />
+                        <Icon icon={Globe} size="sm" className={useWeb ? "text-cyan-600" : "text-muted-foreground"} />
+                        <Icon icon={BookOpen} size="sm" className={useKnowledge ? "text-cyan-600" : "text-muted-foreground"} />
                         <span className="truncate text-xs font-semibold text-foreground">Sources</span>
                       </span>
                       <Icon
