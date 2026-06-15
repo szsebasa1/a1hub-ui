@@ -1005,7 +1005,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                     onSubmit()
                   }
                 }}
-                disabled={isSubmitDisabled || isSubmitting}
+                disabled={(isSubmitDisabled || isSubmitting) && !canCancel}
               >
                 {canCancel ? (
                   <>
