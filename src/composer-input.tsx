@@ -997,7 +997,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                                 Agentic
                               </div>
                               <p className="mt-0.5 text-[11px] text-muted-foreground">
-                                Let Kyber plan and combine web + knowledge automatically
+                                Turns the assistant into a researcher. Searches the web and your knowledge base on its own until it has a real answer.
                               </p>
                             </div>
                             <button
