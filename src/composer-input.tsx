@@ -20,6 +20,7 @@ import {
 } from "./"
 import {
   BookOpen,
+  Bot,
   Check,
   ChevronDown,
   Cpu,
@@ -156,6 +157,9 @@ export type ComposerInputProps = {
   onUseWebChange?: (value: boolean) => void
   useKnowledge?: boolean
   onUseKnowledgeChange?: (value: boolean) => void
+  /** Agentic mode — when enabled the backend orchestrates web + knowledge automatically. */
+  useAgentic?: boolean
+  onUseAgenticChange?: (value: boolean) => void
 
   // ---- Loading overlay ----
   /**
@@ -209,6 +213,8 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
       onUseWebChange,
       useKnowledge = false,
       onUseKnowledgeChange,
+      useAgentic = false,
+      onUseAgenticChange,
       loadingOverlay,
       autoFocusOnMount = false,
     },
@@ -906,6 +912,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                       <span className="flex min-w-0 items-center gap-2">
                         <Icon icon={Globe} size="sm" className={useWeb ? "text-cyan-600" : "text-muted-foreground"} />
                         <Icon icon={BookOpen} size="sm" className={useKnowledge ? "text-cyan-600" : "text-muted-foreground"} />
+                        <Icon icon={Bot} size="sm" className={useAgentic ? "text-cyan-600" : "text-muted-foreground"} />
                         <span className="truncate text-xs font-semibold text-foreground">Sources</span>
                       </span>
                       <Icon
@@ -978,6 +985,37 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                                 className={cn(
                                   "absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform",
                                   useKnowledge ? "left-4" : "left-0.5"
+                                )}
+                              />
+                            </button>
+                          </div>
+
+                          <div className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 hover:bg-muted/70">
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+                                <Icon icon={Bot} size="sm" className="text-cyan-700" />
+                                Agentic
+                              </div>
+                              <p className="mt-0.5 text-[11px] text-muted-foreground">
+                                Let Kyber plan and combine web + knowledge automatically
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              role="switch"
+                              aria-checked={useAgentic}
+                              aria-label="Use agentic source"
+                              className={cn(
+                                "relative h-5 w-9 shrink-0 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500",
+                                useAgentic ? "bg-cyan-500" : "bg-slate-300"
+                              )}
+                              onClick={() => onUseAgenticChange?.(!useAgentic)}
+                              disabled={isInteractionLocked}
+                            >
+                              <span
+                                className={cn(
+                                  "absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform",
+                                  useAgentic ? "left-4" : "left-0.5"
                                 )}
                               />
                             </button>
