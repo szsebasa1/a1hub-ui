@@ -1,0 +1,43 @@
+[project]
+id = "a1hub-ui"
+prefix = "HUBUI"
+docs_folder = "docs/walkthroughs"
+exclude_permanent_preferences = false
+related_projects = ["a1hub-front"]
+
+[prefixes]
+allowed = ["HUBUI"]
+
+[workflow]
+default_branch = "main"
+branch_prefix_task = "task"
+branch_prefix_epic = "epic"
+branch_prefix_fix = "fix"
+merge_strategy_task = "merge"
+merge_strategy_epic = "merge"
+require_pr = true
+commit_convention = "freeform"
+protected_branches = ["main", "main"]
+
+[snapshots]
+enabled = true
+max_count = 10
+
+[insights]
+min_tokens = 20
+types = ["finding", "mistake", "discovery", "plan", "decision", "learning"]
+
+[code_health]
+# Code-splitting enforcement. `level`: off | warn | strict.
+#   warn   = real-time PostToolUse nudge on an oversized edited file + `brain
+#            code-health` reports (advisory; the default).
+#   strict = also exits `brain code-health` non-zero on violations so CI / the
+#            end-of-task gate can block. Small focused modules classify into one
+#            behavioral room and retrieve precisely — better deliverable AND brain.
+level = "warn"
+max_file_lines = 1200
+max_function_lines = 120
+max_rooms_per_file = 5
+
+[embeddings]
+code_model = "mlx:mlx-community/Qwen3-Embedding-0.6B-mxfp8"

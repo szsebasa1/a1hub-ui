@@ -1,2 +1,8 @@
 /node_modules
 .DS_Store
+
+# local secrets / env
+.env
+
+# Machine-local brain MCP registration (absolute paths) — regenerate with `brain setup`; never commit one machine's paths.
+.mcp.json

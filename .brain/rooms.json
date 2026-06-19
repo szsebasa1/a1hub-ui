@@ -1,0 +1,34 @@
+{
+  "confirmed_kinds": {
+    "data-display": "furniture",
+    "form-controls": "furniture",
+    "layout-surfaces": "furniture",
+    "overlays-feedback": "furniture",
+    "styling-utils": "furniture",
+    "uploads": "furniture"
+  },
+  "generated_at": "2026-06-19T18:11:16.553112+00:00",
+  "kinds": {
+    "data-display": "furniture",
+    "form-controls": "furniture",
+    "layout-surfaces": "furniture",
+    "overlays-feedback": "furniture",
+    "styling-utils": "furniture",
+    "uploads": "furniture"
+  },
+  "meta": {
+    "authored_by": "agent"
+  },
+  "model": null,
+  "rooms": {
+    "data-display": "Read-only presentation of data and metrics: table, badge, stat-card, progress-metric, simple-bar-chart, activity-list, status-list",
+    "form-controls": "Interactive input components and form wiring: button, input, textarea, password-input, message composer, dropdown menu, and react-hook-form form primitives",
+    "layout-surfaces": "Structural containers and iconography primitives that other components compose on top of: card, icon",
+    "other": "none of the above / cannot tell",
+    "overlays-feedback": "Transient and layered UI: dialogs/modals, toast notifications (toast, toaster, use-toast hook), and skeleton loading placeholders",
+    "styling-utils": "Cross-cutting styling helpers and public surface: cn class-merge helper (utils.ts) and the index.ts barrel re-exporting all components",
+    "uploads": "File attachment upload UI with per-file status state machine (idle/uploading/uploaded/failed) and progress: attachment-upload-card"
+  },
+  "source": "enhanced",
+  "version": "dfcbfca1"
+}
