@@ -642,7 +642,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
             {dictationState === "listening" ? (
               <div className="flex items-center gap-2 rounded-lg border border-dashed border-indigo-400 bg-indigo-50 px-3 py-2 text-sm text-indigo-900">
                 <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-500 animate-pulse" />
-                Kyber is listening...
+                Agent is listening...
               </div>
             ) : null}
 
@@ -966,7 +966,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                                 Use Knowledge
                               </div>
                               <p className="mt-0.5 text-[11px] text-muted-foreground">
-                                Search Kyber indexed attachments and workspace context
+                                Search into indexed knwoledge base
                               </p>
                             </div>
                             <button
