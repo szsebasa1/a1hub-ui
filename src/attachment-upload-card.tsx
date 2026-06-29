@@ -32,7 +32,9 @@ export function AttachmentUploadCard({ attachment, onRemove, onRetry }: Attachme
               <Icon icon={FileText} size="sm" className="text-muted-foreground" />
               <span className="truncate">{attachment.fileName}</span>
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">Purpose: {attachment.purpose.replaceAll("_", " ")}</p>
+            {attachment.purpose ? (
+              <p className="mt-1 text-xs text-muted-foreground">Purpose: {attachment.purpose.replaceAll("_", " ")}</p>
+            ) : null}
           </div>
 
           <div className="flex items-center gap-1">

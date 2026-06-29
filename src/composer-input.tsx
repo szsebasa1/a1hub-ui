@@ -133,16 +133,31 @@ export type ComposerInputProps = {
   /** Show the paperclip / upload dialog button. Default: true */
   showAttachButton?: boolean
   attachments?: AttachmentUploadCardAttachment[]
-  purposeOptions: Array<{ value: AttachmentPurpose; label: string }>
+  purposeOptions?: Array<{ value: AttachmentPurpose; label: string }>
+  /** Show the "Purpose" dropdown inside the upload dialog. Default: true */
+  showPurposeSelector?: boolean
   onAttachFiles?: (
     files: File[],
     purpose: AttachmentPurpose,
-    addToKnowledge?: boolean
+    addToKnowledge?: boolean,
+    departmentId?: string | null
   ) => Promise<void>
   onRemoveAttachment?: (localId: string) => void
   onRetryAttachment?: (localId: string) => void
   /** Show "Add to A1Hub Knowledge base" checkbox inside the upload dialog. Default: false */
   showKnowledgeBaseOption?: boolean
+  /**
+   * Show a department selector inside the upload dialog (only rendered when the
+   * "Add to Knowledge base" checkbox is also enabled and ticked). Lets the user
+   * pick which department the ingested file lands in. Default: false
+   */
+  showDepartmentSelector?: boolean
+  departmentOptions?: Array<{ id: string; name: string }>
+  /** Empty string means "Global" when allowed. */
+  selectedDepartmentId?: string
+  onSelectedDepartmentChange?: (departmentId: string) => void
+  /** Allow selecting "Global" (no department) in the department selector. */
+  allowGlobalDepartment?: boolean
 
   // ---- LLM selector ----
   showModelSelector?: boolean
@@ -198,11 +213,17 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
       isCloseDisabled = false,
       showAttachButton = true,
       attachments = [],
-      purposeOptions,
+      purposeOptions = [],
+      showPurposeSelector = true,
       onAttachFiles,
       onRemoveAttachment,
       onRetryAttachment,
       showKnowledgeBaseOption = false,
+      showDepartmentSelector = false,
+      departmentOptions = [],
+      selectedDepartmentId = "",
+      onSelectedDepartmentChange,
+      allowGlobalDepartment = false,
       showModelSelector = false,
       llmModels = [],
       isLlmModelsLoading = false,
@@ -511,7 +532,12 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
       if (isDisabled || selectedFiles.length === 0 || !onAttachFiles) return
       setIsSubmittingUpload(true)
       try {
-        await onAttachFiles(selectedFiles, selectedPurpose, addToKnowledgeBase)
+        await onAttachFiles(
+          selectedFiles,
+          selectedPurpose,
+          addToKnowledgeBase,
+          addToKnowledgeBase ? selectedDepartmentId : undefined
+        )
         setUploadDialogOpen(false)
         resetUploadState()
       } finally {
@@ -685,21 +711,23 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                       </DialogHeader>
 
                       <div className="space-y-3">
-                        <div className="space-y-1">
-                          <p className="text-sm font-medium">Purpose</p>
-                          <select
-                            className="border-input h-10 w-full rounded-md border bg-background px-3 text-sm"
-                            value={selectedPurpose}
-                            disabled={isDisabled}
-                            onChange={(event) => setSelectedPurpose(event.target.value as AttachmentPurpose)}
-                          >
-                            {purposeOptions.map((option) => (
-                              <option key={option.value} value={option.value}>
-                                {option.label}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                        {showPurposeSelector && purposeOptions.length > 0 ? (
+                          <div className="space-y-1">
+                            <p className="text-sm font-medium">Purpose</p>
+                            <select
+                              className="border-input h-10 w-full rounded-md border bg-background px-3 text-sm"
+                              value={selectedPurpose}
+                              disabled={isDisabled}
+                              onChange={(event) => setSelectedPurpose(event.target.value as AttachmentPurpose)}
+                            >
+                              {purposeOptions.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                  {option.label}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        ) : null}
 
                         <div className="space-y-1">
                           <p className="text-sm font-medium">File</p>
@@ -769,6 +797,31 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                             />
                             Add to A1Hub Knowledge base
                           </label>
+                        ) : null}
+
+                        {showKnowledgeBaseOption &&
+                        addToKnowledgeBase &&
+                        showDepartmentSelector ? (
+                          <div className="space-y-1">
+                            <p className="text-sm font-medium">Department</p>
+                            <select
+                              className="border-input h-10 w-full rounded-md border bg-background px-3 text-sm"
+                              value={selectedDepartmentId}
+                              disabled={isSubmittingUpload || isDisabled}
+                              onChange={(event) =>
+                                onSelectedDepartmentChange?.(event.target.value)
+                              }
+                            >
+                              {allowGlobalDepartment ? (
+                                <option value="">Global</option>
+                              ) : null}
+                              {departmentOptions.map((option) => (
+                                <option key={option.id} value={option.id}>
+                                  {option.name}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
                         ) : null}
                       </div>
 
