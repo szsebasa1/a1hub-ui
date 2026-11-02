@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AccelOne — Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --purple:       #52068E;
+    --purple-deep:  #170426;
+    --purple-mid:   #2D0550;
+    --purple-light: #6B0DAA;
+    --purple-mist:  #F3EAFB;
+    --pink:         #D4006A;
+    --gold:         #F9BF00;
+    --white:        #FFFFFF;
+    --off-white:    #F7F7F9;
+    --gray-light:   #EFEFEF;
+    --gray-mid:     #9490A0;
+    --ink:          #1A1A2E;
+    --font-body:    'Roboto', sans-serif;
+    --font-display: 'Roboto Condensed', 'Roboto', sans-serif;
+    --shadow-card:  0 2px 20px rgba(74,6,128,0.08);
+    --shadow-deep:  0 8px 40px rgba(74,6,128,0.16);
+    --radius-sm: 4px;
+    --radius-md: 10px;
+    --radius-lg: 18px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 48px 32px 96px; }
+  section { margin-bottom: 72px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-light);
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--purple-deep);
+    border-radius: var(--radius-lg);
+    padding: 64px 64px 56px;
+    margin-bottom: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(74,6,128,0.7) 0%, transparent 68%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(212,0,106,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-inner { position: relative; z-index: 1; }
+  .cover-logo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 40px;
+    display: block;
+  }
+  .cover-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cover-headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .cover-headline span { color: var(--pink); }
+  .cover-sub {
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+  .cover-bar {
+    width: 40px; height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 28px 0 0;
+  }
+  .cover-meta {
+    position: absolute;
+    bottom: 40px; right: 64px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+    text-align: right;
+    z-index: 1;
+  }
+
+  /* LOGO SECTION */
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .logo-slab {
+    border-radius: var(--radius-md);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logo-slab.dark  { background: var(--purple-deep); }
+  .logo-slab.light { background: var(--white); border: 1px solid var(--gray-light); }
+  .logo-slab img { max-width: 280px; width: 100%; height: auto; display: block; object-fit: contain; }
+  .logo-slab .logo-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .logo-slab.dark  .logo-label { color: rgba(255,255,255,0.35); }
+  .logo-slab.light .logo-label { color: var(--gray-mid); }
+
+  /* IDENTITY CORE */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .identity-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--purple);
+  }
+  .identity-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 12px;
+  }
+  .identity-card p { font-size: 14px; line-height: 1.65; }
+
+  /* PALETTE */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+  .swatch-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+  .swatch-name { font-size: 11px; font-weight: 500; color: var(--ink); line-height: 1.3; }
+  .swatch-hex  { font-size: 10px; color: var(--gray-mid); font-family: 'Courier New', monospace; }
+  .swatch-role { font-size: 10px; color: var(--gray-mid); margin-top: 1px; }
+
+  /* TYPOGRAPHY */
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .type-specimen {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .type-meta {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray-mid); margin-bottom: 12px;
+  }
+  .spec-display {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 52px;
+    line-height: 1.05; color: var(--purple-deep);
+  }
+  .spec-h1 { font-weight: 700; font-size: 30px; line-height: 1.2; color: var(--purple-deep); }
+  .spec-h1 span { color: var(--pink); }
+  .spec-h2 { font-weight: 500; font-size: 20px; line-height: 1.3; color: var(--ink); }
+  .spec-body { font-weight: 400; font-size: 15px; line-height: 1.65; color: var(--ink); max-width: 520px; }
+  .spec-caption { font-weight: 300; font-size: 12px; line-height: 1.5; color: var(--gray-mid); letter-spacing: 0.04em; }
+
+  .weights-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    margin-top: 16px;
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .weight-item { display: flex; flex-direction: column; gap: 4px; }
+  .weight-sample { font-size: 24px; color: var(--purple-deep); }
+  .weight-note { font-size: 11px; color: var(--gray-mid); }
+
+  /* VOICE CARDS */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .voice-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .voice-icon {
+    width: 36px; height: 36px;
+    background: var(--purple-mist);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .voice-card h4 { font-weight: 700; font-size: 13px; margin-bottom: 4px; color: var(--purple-deep); }
+  .voice-card p  { font-size: 13px; color: var(--gray-mid); line-height: 1.55; }
+
+  /* TONE TABLE */
+  .tone-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .tone-table thead th {
+    background: var(--purple-deep);
+    color: var(--white);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 20px; text-align: left;
+  }
+  .tone-table tbody tr:nth-child(even) { background: var(--off-white); }
+  .tone-table tbody td {
+    padding: 14px 20px; font-size: 13px;
+    border-bottom: 1px solid var(--gray-light);
+    vertical-align: middle;
+  }
+  .tone-table tbody td:first-child { font-weight: 700; color: var(--purple); white-space: nowrap; }
+  .tone-table tbody tr:last-child td { border-bottom: none; }
+  .scale-bar { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--gray-mid); }
+  .scale-bar .track { flex: 1; height: 4px; background: var(--gray-light); border-radius: 2px; }
+  .scale-bar .fill  { height: 100%; background: linear-gradient(90deg, var(--purple), var(--pink)); border-radius: 2px; }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    background: var(--purple-deep);
+    border-radius: var(--radius-md);
+    padding: 48px 56px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-block::before {
+    content: '"';
+    position: absolute; top: -20px; left: 36px;
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 200px;
+    color: rgba(74,6,128,0.5);
+    line-height: 1; pointer-events: none;
+  }
+  .quote-block p {
+    font-size: 18px; font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.90);
+    position: relative; z-index: 1;
+    max-width: 680px;
+  }
+  .quote-source {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 24px;
+    position: relative; z-index: 1;
+  }
+
+  /* MESSAGING */
+  .message-stack { display: flex; flex-direction: column; gap: 12px; }
+  .message-tier {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
+    display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: start;
+  }
+  .tier-1 { border-left: 4px solid var(--purple-deep); }
+  .tier-2 { border-left: 4px solid var(--purple); }
+  .tier-3 { border-left: 4px solid var(--pink); }
+  .tier-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); padding-top: 2px; }
+  .tier-label strong { display: block; font-size: 20px; letter-spacing: 0; font-family: var(--font-display); font-weight: 700; color: var(--purple); margin-bottom: 2px; }
+  .tier-content { font-size: 14px; line-height: 1.65; }
+  .tier-content strong { color: var(--purple-deep); }
+
+  /* RULES */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rule-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 24px; box-shadow: var(--shadow-card);
+  }
+  .rule-card.do   { border-left: 4px solid #16A34A; }
+  .rule-card.dont { border-left: 4px solid #DC2626; }
+  .rule-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+  .rule-card.do   .rule-label { color: #16A34A; }
+  .rule-card.dont .rule-label { color: #DC2626; }
+  .rule-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .rule-list li { font-size: 13px; color: var(--ink); padding-left: 18px; position: relative; line-height: 1.5; }
+  .rule-card.do   .rule-list li::before { content: '✓'; position: absolute; left: 0; color: #16A34A; font-weight: 700; }
+  .rule-card.dont .rule-list li::before { content: '✕'; position: absolute; left: 0; color: #DC2626; font-weight: 700; }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--gray-light);
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .doc-footer img { height: 28px; width: auto; }
+  .doc-footer p { font-size: 11px; color: var(--gray-mid); }
+
+  @media (max-width: 780px) {
+    .palette-grid { grid-template-columns: repeat(4,1fr); }
+    .identity-grid, .voice-grid, .rules-grid, .type-grid, .logo-showcase { grid-template-columns: 1fr; }
+    .cover { padding: 40px 28px; }
+    .cover-meta { display: none; }
+    .message-tier { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-inner">
+      <svg style="max-width:320px;width:100%;display:block;margin-bottom:40px;" viewBox="0 0 6619 1514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip_wcover)">
+<path d="M5313.98 160.543C5861.04 160.543 6273.64 292.879 6619 504C6399.73 244.935 5940.24 0.0078125 5319.25 0.0078125C4698.27 0.0078125 4293.24 235.122 4043 504C4388.36 292.879 4766.92 160.543 5313.98 160.543Z" fill="#F9BF00"/>
+<path d="M656.624 1320.06H270.746L197.145 1499.09H0L370.37 664.133H560.418L932.102 1499.09H730.225L656.624 1320.06ZM595.904 1173.24L464.211 853.464L332.518 1173.24H596.167H595.904Z" fill="white"/>
+<path d="M895.98 1081.35C895.98 829.699 1088.39 649.609 1347.05 649.609C1490.83 649.609 1610.7 702.157 1689.03 797.483L1565.48 912.086C1509.76 847.655 1439.57 814.383 1356.51 814.383C1200.9 814.383 1090.5 924.233 1090.5 1081.61C1090.5 1238.99 1200.9 1348.84 1356.51 1348.84C1439.57 1348.84 1509.76 1315.57 1565.48 1249.82L1689.03 1364.42C1610.7 1461.07 1490.83 1513.62 1346 1513.62C1088.39 1513.62 895.98 1333.53 895.98 1081.88V1081.35Z" fill="white"/>
+<path d="M1730.75 1081.35C1730.75 829.699 1923.16 649.609 2181.82 649.609C2325.6 649.609 2445.47 702.157 2523.8 797.483L2400.25 912.086C2344.53 847.655 2274.34 814.383 2191.28 814.383C2035.67 814.383 1925.27 924.233 1925.27 1081.61C1925.27 1238.99 2035.67 1348.84 2191.28 1348.84C2274.34 1348.84 2344.53 1315.57 2400.25 1249.82L2523.8 1364.42C2445.47 1461.07 2325.6 1513.62 2180.77 1513.62C1923.16 1513.62 1730.75 1333.53 1730.75 1081.88V1081.35Z" fill="white"/>
+<path d="M3230.33 1343.82V1498.83H2603.93V663.867H3231.9V818.871H2795.03V1000.28H3180.91V1150.53H2795.03V1343.82H3230.33Z" fill="white"/>
+<path d="M3392.11 664.133H3584.53V1341.71H4001.16V1499.09H3392.11V664.133Z" fill="white"/>
+<path d="M4042.74 1081.35C4042.74 833.132 4235.15 649.609 4497.48 649.609C4759.82 649.609 4952.23 832.075 4952.23 1081.35C4952.23 1330.62 4758.77 1513.09 4497.48 1513.09C4236.2 1513.09 4042.74 1329.3 4042.74 1081.35ZM4757.45 1081.35C4757.45 922.648 4645.74 814.119 4497.48 814.119C4349.23 814.119 4237.52 922.648 4237.52 1081.35C4237.52 1240.05 4349.23 1348.58 4497.48 1348.58C4645.74 1348.58 4757.45 1240.05 4757.45 1081.35Z" fill="white"/>
+<path d="M5831.36 664.133V1499.09H5673.38L5259.12 992.096V1499.09H5069.07V664.133H5228.1L5641.31 1171.13V664.133H5831.36Z" fill="white"/>
+<path d="M6617.91 1343.82V1498.83H5991.51V663.867H6619.48V818.871H6182.61V1000.28H6568.49V1150.53H6182.61V1343.82H6617.91Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip_wcover">
+<rect width="6619" height="1514" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+      <div class="cover-eyebrow">Brand Identity System</div>
+      <div class="cover-headline">Built to<br><span>accelerate.</span></div>
+      <p class="cover-sub">Software development and staff augmentation. Headquartered in Seattle, delivering from the Americas.</p>
+      <div class="cover-bar"></div>
+    </div>
+    <div class="cover-meta">Internal use only<br>Marketing &amp; Content Team</div>
+  </div>
+
+  <!-- LOGO USAGE -->
+  <section>
+    <div class="section-label">Logo Usage</div>
+    <div class="logo-showcase">
+      <div class="logo-slab dark">
+        <svg style="max-width:360px;width:100%;display:block;" viewBox="0 0 6619 1514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip_wslab)">
+<path d="M5313.98 160.543C5861.04 160.543 6273.64 292.879 6619 504C6399.73 244.935 5940.24 0.0078125 5319.25 0.0078125C4698.27 0.0078125 4293.24 235.122 4043 504C4388.36 292.879 4766.92 160.543 5313.98 160.543Z" fill="#F9BF00"/>
+<path d="M656.624 1320.06H270.746L197.145 1499.09H0L370.37 664.133H560.418L932.102 1499.09H730.225L656.624 1320.06ZM595.904 1173.24L464.211 853.464L332.518 1173.24H596.167H595.904Z" fill="white"/>
+<path d="M895.98 1081.35C895.98 829.699 1088.39 649.609 1347.05 649.609C1490.83 649.609 1610.7 702.157 1689.03 797.483L1565.48 912.086C1509.76 847.655 1439.57 814.383 1356.51 814.383C1200.9 814.383 1090.5 924.233 1090.5 1081.61C1090.5 1238.99 1200.9 1348.84 1356.51 1348.84C1439.57 1348.84 1509.76 1315.57 1565.48 1249.82L1689.03 1364.42C1610.7 1461.07 1490.83 1513.62 1346 1513.62C1088.39 1513.62 895.98 1333.53 895.98 1081.88V1081.35Z" fill="white"/>
+<path d="M1730.75 1081.35C1730.75 829.699 1923.16 649.609 2181.82 649.609C2325.6 649.609 2445.47 702.157 2523.8 797.483L2400.25 912.086C2344.53 847.655 2274.34 814.383 2191.28 814.383C2035.67 814.383 1925.27 924.233 1925.27 1081.61C1925.27 1238.99 2035.67 1348.84 2191.28 1348.84C2274.34 1348.84 2344.53 1315.57 2400.25 1249.82L2523.8 1364.42C2445.47 1461.07 2325.6 1513.62 2180.77 1513.62C1923.16 1513.62 1730.75 1333.53 1730.75 1081.88V1081.35Z" fill="white"/>
+<path d="M3230.33 1343.82V1498.83H2603.93V663.867H3231.9V818.871H2795.03V1000.28H3180.91V1150.53H2795.03V1343.82H3230.33Z" fill="white"/>
+<path d="M3392.11 664.133H3584.53V1341.71H4001.16V1499.09H3392.11V664.133Z" fill="white"/>
+<path d="M4042.74 1081.35C4042.74 833.132 4235.15 649.609 4497.48 649.609C4759.82 649.609 4952.23 832.075 4952.23 1081.35C4952.23 1330.62 4758.77 1513.09 4497.48 1513.09C4236.2 1513.09 4042.74 1329.3 4042.74 1081.35ZM4757.45 1081.35C4757.45 922.648 4645.74 814.119 4497.48 814.119C4349.23 814.119 4237.52 922.648 4237.52 1081.35C4237.52 1240.05 4349.23 1348.58 4497.48 1348.58C4645.74 1348.58 4757.45 1240.05 4757.45 1081.35Z" fill="white"/>
+<path d="M5831.36 664.133V1499.09H5673.38L5259.12 992.096V1499.09H5069.07V664.133H5228.1L5641.31 1171.13V664.133H5831.36Z" fill="white"/>
+<path d="M6617.91 1343.82V1498.83H5991.51V663.867H6619.48V818.871H6182.61V1000.28H6568.49V1150.53H6182.61V1343.82H6617.91Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip_wslab">
+<rect width="6619" height="1514" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        <div class="logo-label">White version — use on dark or purple backgrounds</div>
+      </div>
+      <div class="logo-slab light">
+        <svg style="max-width:360px;width:100%;display:block;" viewBox="0 0 6619 1514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip_bslab)">
+<path d="M5313.98 160.543C5861.04 160.543 6273.64 292.879 6619 504C6399.73 244.935 5940.24 0.0078125 5319.25 0.0078125C4698.27 0.0078125 4293.24 235.122 4043 504C4388.36 292.879 4766.92 160.543 5313.98 160.543Z" fill="#F9BF00"/>
+<path d="M656.624 1320.06H270.746L197.145 1499.09H0L370.37 664.133H560.418L932.102 1499.09H730.225L656.624 1320.06ZM595.904 1173.24L464.211 853.464L332.518 1173.24H596.167H595.904Z" fill="black"/>
+<path d="M895.98 1081.35C895.98 829.699 1088.39 649.609 1347.05 649.609C1490.83 649.609 1610.7 702.157 1689.03 797.483L1565.48 912.086C1509.76 847.655 1439.57 814.383 1356.51 814.383C1200.9 814.383 1090.5 924.233 1090.5 1081.61C1090.5 1238.99 1200.9 1348.84 1356.51 1348.84C1439.57 1348.84 1509.76 1315.57 1565.48 1249.82L1689.03 1364.42C1610.7 1461.07 1490.83 1513.62 1346 1513.62C1088.39 1513.62 895.98 1333.53 895.98 1081.88V1081.35Z" fill="black"/>
+<path d="M1730.75 1081.35C1730.75 829.699 1923.16 649.609 2181.82 649.609C2325.6 649.609 2445.47 702.157 2523.8 797.483L2400.25 912.086C2344.53 847.655 2274.34 814.383 2191.28 814.383C2035.67 814.383 1925.27 924.233 1925.27 1081.61C1925.27 1238.99 2035.67 1348.84 2191.28 1348.84C2274.34 1348.84 2344.53 1315.57 2400.25 1249.82L2523.8 1364.42C2445.47 1461.07 2325.6 1513.62 2180.77 1513.62C1923.16 1513.62 1730.75 1333.53 1730.75 1081.88V1081.35Z" fill="black"/>
+<path d="M3230.33 1343.82V1498.83H2603.93V663.867H3231.9V818.871H2795.03V1000.28H3180.91V1150.53H2795.03V1343.82H3230.33Z" fill="black"/>
+<path d="M3392.11 664.133H3584.53V1341.71H4001.16V1499.09H3392.11V664.133Z" fill="black"/>
+<path d="M4042.74 1081.35C4042.74 833.132 4235.15 649.609 4497.48 649.609C4759.82 649.609 4952.23 832.075 4952.23 1081.35C4952.23 1330.62 4758.77 1513.09 4497.48 1513.09C4236.2 1513.09 4042.74 1329.3 4042.74 1081.35ZM4757.45 1081.35C4757.45 922.648 4645.74 814.119 4497.48 814.119C4349.23 814.119 4237.52 922.648 4237.52 1081.35C4237.52 1240.05 4349.23 1348.58 4497.48 1348.58C4645.74 1348.58 4757.45 1240.05 4757.45 1081.35Z" fill="black"/>
+<path d="M5831.36 664.133V1499.09H5673.38L5259.12 992.096V1499.09H5069.07V664.133H5228.1L5641.31 1171.13V664.133H5831.36Z" fill="black"/>
+<path d="M6617.91 1343.82V1498.83H5991.51V663.867H6619.48V818.871H6182.61V1000.28H6568.49V1150.53H6182.61V1343.82H6617.91Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip_bslab">
+<rect width="6619" height="1514" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        <div class="logo-label">Dark version — use on white or light backgrounds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTITY CORE -->
+  <section>
+    <div class="section-label">Identity Core</div>
+    <div class="identity-grid">
+      <div class="identity-card">
+        <h3>Mission</h3>
+        <p>To give companies and the people we serve the experience, technical powers, innovations and advantages to achieve greatness.</p>
+      </div>
+      <div class="identity-card">
+        <h3>Vision</h3>
+        <p>To be recognized as the finest and most respected technology services company in the Americas.</p>
+      </div>
+      <div class="identity-card">
+        <h3>Values</h3>
+        <p><strong>Be a Team Player.</strong> Collaborative, helpful, and respectful.<br><br><strong>Be Honorable.</strong> Act with integrity in everything.<br><br><strong>Be Proactive.</strong> Move forward before you're asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR PALETTE -->
+  <section>
+    <div class="section-label">Color Palette</div>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#170426;"></div>
+        <div class="swatch-name">Deep Purple</div>
+        <div class="swatch-hex">#170426</div>
+        <div class="swatch-role">Dark BG / Footer</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#2D0550;"></div>
+        <div class="swatch-name">Purple Mid</div>
+        <div class="swatch-hex">#2D0550</div>
+        <div class="swatch-role">Sections / Cards</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#52068E;"></div>
+        <div class="swatch-name">Brand Purple</div>
+        <div class="swatch-hex">#52068E</div>
+        <div class="swatch-role">Primary / CTAs</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#D4006A;"></div>
+        <div class="swatch-name">Pink Accent</div>
+        <div class="swatch-hex">#D4006A</div>
+        <div class="swatch-role">Highlights / Hero</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#F9BF00; border-color: rgba(0,0,0,0.1);"></div>
+        <div class="swatch-name">Gold</div>
+        <div class="swatch-hex">#F9BF00</div>
+        <div class="swatch-role">Logo mark only</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#FFFFFF;"></div>
+        <div class="swatch-name">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-role">Text / Surface</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#F3EAFB;"></div>
+        <div class="swatch-name">Purple Mist</div>
+        <div class="swatch-hex">#F3EAFB</div>
+        <div class="swatch-role">Light BG / Cards</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-mid);margin-top:16px;">The gold appears only in the logomark and is used sparingly. The purple-to-pink axis is the active UI palette.</p>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section>
+    <div class="section-label">Typography — Roboto Family</div>
+    <div class="type-grid">
+      <div class="type-specimen">
+        <div class="type-meta">Display / Hero — Roboto Condensed Bold</div>
+        <div class="spec-display">Lorem ipsum</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-meta">H1 — Roboto Bold 30px</div>
+        <div class="spec-h1">Build commercially ready AI<br><span>that actually ships.</span></div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-meta">H2 — Roboto Medium 20px</div>
+        <div class="spec-h2">Nearshore talent, onshore results.</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-meta">Body — Roboto Regular 15px / 1.65 leading</div>
+        <div class="spec-body">We seamlessly integrate skilled professionals from the Americas into your teams, fostering agile, responsive, and transparent working environments.</div>
+      </div>
+    </div>
+    <div class="weights-card">
+      <div class="type-meta" style="width:100%;margin-bottom:0;">Font Weights</div>
+      <div class="weight-item">
+        <div class="weight-sample" style="font-weight:300;">Light</div>
+        <div class="weight-note">300 — Taglines, supporting text</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-sample" style="font-weight:400;">Regular</div>
+        <div class="weight-note">400 — Body copy</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-sample" style="font-weight:500;">Medium</div>
+        <div class="weight-note">500 — Labels, subheads</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-sample" style="font-weight:700;">Bold</div>
+        <div class="weight-note">700 — Headlines, CTAs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE & TONE -->
+  <section>
+    <div class="section-label">Voice &amp; Tone</div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-icon">💡</div>
+        <div>
+          <h4>Confident, Expert</h4>
+          <p>Speaks with assurance rooted in deep technical know-how. Precise but clear — complexity made accessible.</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🤝</div>
+        <div>
+          <h4>Collaborative, Empowering</h4>
+          <p>Positions AccelOne as teammate and guide, not vendor. Always "we" — encourages dialogue and shared ownership.</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🔭</div>
+        <div>
+          <h4>Dynamic, Future-Focused</h4>
+          <p>Embraces AI, cloud, and what's next. Optimistic without being vague. "Advancing what's possible."</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">📐</div>
+        <div>
+          <h4>Straightforward, Trustworthy</h4>
+          <p>No jargon overload. Reflects our principles: transparency, accountability, and responsiveness in every interaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TONE DIMENSIONS -->
+  <section>
+    <div class="section-label">Tone Dimensions</div>
+    <table class="tone-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Scale</th>
+          <th>Our Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Formality</td>
+          <td><div class="scale-bar"><span>Formal</span><div class="track"><div class="fill" style="width:35%"></div></div><span>Friendly</span></div></td>
+          <td>Lean friendly. Warm tone builds trust while maintaining expertise.</td>
+        </tr>
+        <tr>
+          <td>Technical Depth</td>
+          <td><div class="scale-bar"><span>Low</span><div class="track"><div class="fill" style="width:70%"></div></div><span>High</span></div></td>
+          <td>Tailored to audience. Technical teams get depth; executives get the big picture.</td>
+        </tr>
+        <tr>
+          <td>Inspirational</td>
+          <td><div class="scale-bar"><span>Pragmatic</span><div class="track"><div class="fill" style="width:60%"></div></div><span>Aspirational</span></div></td>
+          <td>Root aspiration in real impact. "Transform your business." "Achieve greatness."</td>
+        </tr>
+        <tr>
+          <td>Collaboration</td>
+          <td><div class="scale-bar"><span>Solo</span><div class="track"><div class="fill" style="width:90%"></div></div><span>"We"</span></div></td>
+          <td>Always speak on behalf of the team and client. "We delivered together."</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- VOICE IN ACTION -->
+  <section>
+    <div class="section-label">Voice in Action</div>
+    <div class="quote-block">
+      <p>AccelOne is your trusted teammate in digital transformation, seamlessly blending onshore and nearshore talent to help you build secure, scalable solutions faster. We partner with you, not just supplement you. We listen. We ask tough questions. We deliver excellence.</p>
+      <div class="quote-source">AccelOne Voice — Brand Guidelines</div>
+    </div>
+  </section>
+
+  <!-- MESSAGING HIERARCHY -->
+  <section>
+    <div class="section-label">Messaging Hierarchy</div>
+    <div class="message-stack">
+      <div class="message-tier tier-1">
+        <div class="tier-label"><strong>T1</strong>Brand Position</div>
+        <div class="tier-content"><strong>The finest technology services partner in the Americas.</strong> Dual-shore delivery model, senior talent, and the transparency to build real trust.</div>
+      </div>
+      <div class="message-tier tier-2">
+        <div class="tier-label"><strong>T2</strong>Value Pillars</div>
+        <div class="tier-content">
+          <strong>Nearshore advantage.</strong> U.S. time zones, business fluency, and cultural alignment from Latin America. No trade-off between cost and quality.<br><br>
+          <strong>Senior-only talent.</strong> Engineers, designers, and data scientists who contribute from day one.<br><br>
+          <strong>AI-ready delivery.</strong> Integrated design, development, and data science teams that ship production AI systems.
+        </div>
+      </div>
+      <div class="message-tier tier-3">
+        <div class="tier-label"><strong>T3</strong>Proof Points</div>
+        <div class="tier-content">98% retention rate. 7-day average hire time. Clients include Blackstone, Trimble, Chubb, Seattle Children's, and the University of Washington. Offices in Seattle, California, and Buenos Aires.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING RULES -->
+  <section>
+    <div class="section-label">Writing Rules</div>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <div class="rule-label">Do</div>
+        <ul class="rule-list">
+          <li>Open with a real observation, tension, or lesson</li>
+          <li>Use "we" for solutions and "you" for goals</li>
+          <li>Anchor claims in real data (98% retention, 7-day hire time)</li>
+          <li>Lead with outcomes, then add specifics</li>
+          <li>Use active voice: say who does what</li>
+          <li>Adapt depth to audience: technical vs. executive</li>
+          <li>Be warm and direct at the same time</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-label">Do Not</div>
+        <ul class="rule-list">
+          <li>Use em dashes</li>
+          <li>Say "game-changing," "revolutionary," "leverage," or "synergy"</li>
+          <li>Open with "In today's fast-paced world..."</li>
+          <li>Write dense paragraphs without clear structure</li>
+          <li>Overclaim AI outcomes without acknowledging tradeoffs</li>
+          <li>Write thought leadership that could belong to any company</li>
+          <li>Use humor or idioms that don't translate across cultures</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <svg style="max-width:160px;width:100%;display:block;" viewBox="0 0 6619 1514" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip_bfooter)">
+<path d="M5313.98 160.543C5861.04 160.543 6273.64 292.879 6619 504C6399.73 244.935 5940.24 0.0078125 5319.25 0.0078125C4698.27 0.0078125 4293.24 235.122 4043 504C4388.36 292.879 4766.92 160.543 5313.98 160.543Z" fill="#F9BF00"/>
+<path d="M656.624 1320.06H270.746L197.145 1499.09H0L370.37 664.133H560.418L932.102 1499.09H730.225L656.624 1320.06ZM595.904 1173.24L464.211 853.464L332.518 1173.24H596.167H595.904Z" fill="black"/>
+<path d="M895.98 1081.35C895.98 829.699 1088.39 649.609 1347.05 649.609C1490.83 649.609 1610.7 702.157 1689.03 797.483L1565.48 912.086C1509.76 847.655 1439.57 814.383 1356.51 814.383C1200.9 814.383 1090.5 924.233 1090.5 1081.61C1090.5 1238.99 1200.9 1348.84 1356.51 1348.84C1439.57 1348.84 1509.76 1315.57 1565.48 1249.82L1689.03 1364.42C1610.7 1461.07 1490.83 1513.62 1346 1513.62C1088.39 1513.62 895.98 1333.53 895.98 1081.88V1081.35Z" fill="black"/>
+<path d="M1730.75 1081.35C1730.75 829.699 1923.16 649.609 2181.82 649.609C2325.6 649.609 2445.47 702.157 2523.8 797.483L2400.25 912.086C2344.53 847.655 2274.34 814.383 2191.28 814.383C2035.67 814.383 1925.27 924.233 1925.27 1081.61C1925.27 1238.99 2035.67 1348.84 2191.28 1348.84C2274.34 1348.84 2344.53 1315.57 2400.25 1249.82L2523.8 1364.42C2445.47 1461.07 2325.6 1513.62 2180.77 1513.62C1923.16 1513.62 1730.75 1333.53 1730.75 1081.88V1081.35Z" fill="black"/>
+<path d="M3230.33 1343.82V1498.83H2603.93V663.867H3231.9V818.871H2795.03V1000.28H3180.91V1150.53H2795.03V1343.82H3230.33Z" fill="black"/>
+<path d="M3392.11 664.133H3584.53V1341.71H4001.16V1499.09H3392.11V664.133Z" fill="black"/>
+<path d="M4042.74 1081.35C4042.74 833.132 4235.15 649.609 4497.48 649.609C4759.82 649.609 4952.23 832.075 4952.23 1081.35C4952.23 1330.62 4758.77 1513.09 4497.48 1513.09C4236.2 1513.09 4042.74 1329.3 4042.74 1081.35ZM4757.45 1081.35C4757.45 922.648 4645.74 814.119 4497.48 814.119C4349.23 814.119 4237.52 922.648 4237.52 1081.35C4237.52 1240.05 4349.23 1348.58 4497.48 1348.58C4645.74 1348.58 4757.45 1240.05 4757.45 1081.35Z" fill="black"/>
+<path d="M5831.36 664.133V1499.09H5673.38L5259.12 992.096V1499.09H5069.07V664.133H5228.1L5641.31 1171.13V664.133H5831.36Z" fill="black"/>
+<path d="M6617.91 1343.82V1498.83H5991.51V663.867H6619.48V818.871H6182.61V1000.28H6568.49V1150.53H6182.61V1343.82H6617.91Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip_bfooter">
+<rect width="6619" height="1514" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+    <p>Brand Identity Reference &nbsp;·&nbsp; Internal Use &nbsp;·&nbsp; Marketing &amp; Content Team</p>
+  </div>
+
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ADDENDUM A: WEB UI COMPONENTS                                -->
+<!-- ============================================================ -->
+
+<style>
+/* ── ADDENDUM SHARED ── */
+.addendum-cover {
+  background: var(--purple-deep);
+  border-radius: var(--radius-lg);
+  padding: 56px 64px;
+  margin-bottom: 72px;
+  position: relative;
+  overflow: hidden;
+}
+.addendum-cover::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(82,6,142,0.6) 0%, transparent 70%);
+  pointer-events: none;
+}
+.addendum-cover-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.addendum-cover-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--white);
+  line-height: 1.1;
+  position: relative; z-index: 1;
+}
+.addendum-cover-title span { color: var(--pink); }
+.addendum-cover-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-top: 16px;
+  max-width: 480px;
+  position: relative; z-index: 1;
+}
+
+/* ── COMPONENT DEMO CARDS ── */
+.demo-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.demo-card-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.demo-card-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+}
+.demo-card-spec {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: var(--purple);
+  background: var(--purple-mist);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.demo-card-body {
+  padding: 36px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  background: var(--off-white);
+}
+.demo-card-body.dark-bg {
+  background: var(--purple-deep);
+}
+.demo-card-body.mid-bg {
+  background: var(--purple-mist);
+}
+.demo-notes {
+  padding: 16px 24px;
+  border-top: 1px solid var(--gray-light);
+  font-size: 12px;
+  color: var(--gray-mid);
+  line-height: 1.6;
+}
+
+/* ── WEB: BUTTONS / CTAs ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+/* Primary */
+.btn-primary {
+  background: var(--purple);
+  color: var(--white);
+  padding: 12px 24px;
+}
+.btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(82,6,142,0.35); }
+.btn-primary:active { transform: translateY(0); }
+
+/* Primary Dark */
+.btn-primary-dark {
+  background: var(--purple-deep);
+  color: var(--white);
+  padding: 12px 24px;
+}
+.btn-primary-dark:hover { background: #0e0218; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(23,4,38,0.4); }
+
+/* Secondary */
+.btn-secondary {
+  background: transparent;
+  color: var(--purple);
+  padding: 11px 23px;
+  border: 1.5px solid var(--purple);
+}
+.btn-secondary:hover { background: var(--purple-mist); transform: translateY(-1px); }
+
+/* Ghost on dark */
+.btn-ghost-dark {
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  padding: 11px 23px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+}
+.btn-ghost-dark:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+/* Gold accent */
+.btn-gold {
+  background: var(--gold);
+  color: var(--purple-deep);
+  padding: 12px 24px;
+  font-weight: 700;
+}
+.btn-gold:hover { background: #e6ad00; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(249,191,0,0.4); }
+
+/* Destructive */
+.btn-danger {
+  background: #DC2626;
+  color: white;
+  padding: 12px 24px;
+}
+.btn-danger:hover { background: #b91c1c; transform: translateY(-1px); }
+
+/* Sizes */
+.btn-sm { font-size: 12px; padding: 8px 16px; border-radius: 5px; }
+.btn-lg { font-size: 16px; padding: 16px 32px; border-radius: 8px; }
+
+/* Icon button */
+.btn-icon {
+  width: 40px; height: 40px;
+  padding: 0;
+  border-radius: 8px;
+  justify-content: center;
+  background: var(--purple-mist);
+  color: var(--purple);
+  border: none;
+}
+.btn-icon:hover { background: var(--purple); color: white; }
+.btn-icon svg { width: 18px; height: 18px; }
+
+/* Disabled */
+.btn:disabled, .btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+}
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── WEB: TAGS / PILLS ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.tag-purple       { background: var(--purple-mist); color: var(--purple); }
+.tag-purple-solid { background: var(--purple); color: white; }
+.tag-gold         { background: #FEF3C7; color: #92400E; }
+.tag-gold-solid   { background: var(--gold); color: var(--purple-deep); font-weight: 700; }
+.tag-pink         { background: #FCE7F3; color: #9D174D; }
+.tag-green        { background: #D1FAE5; color: #065F46; }
+.tag-red          { background: #FEE2E2; color: #991B1B; }
+.tag-gray         { background: var(--gray-light); color: var(--gray-mid); }
+.tag-outline      { background: transparent; color: var(--purple); border: 1px solid var(--purple); }
+.tag-dot::before  { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+/* Removable tag */
+.tag-removable {
+  cursor: default;
+}
+.tag-x {
+  width: 14px; height: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 10px;
+  font-style: normal;
+  background: rgba(0,0,0,0.1);
+  transition: background 0.15s;
+}
+.tag-x:hover { background: rgba(0,0,0,0.2); }
+
+/* ── WEB: CALLOUTS / ALERTS ── */
+.callout {
+  display: flex;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.6;
+  border-left: 4px solid;
+  width: 100%;
+}
+.callout-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.callout-content strong {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.callout-info    { background: var(--purple-mist); color: #3B0764; border-color: var(--purple); }
+.callout-success { background: #ECFDF5; color: #064E3B; border-color: #10B981; }
+.callout-warning { background: #FFFBEB; color: #78350F; border-color: var(--gold); }
+.callout-error   { background: #FEF2F2; color: #7F1D1D; border-color: #EF4444; }
+.callout-dark    { background: var(--purple-deep); color: rgba(255,255,255,0.85); border-color: var(--gold); }
+
+/* ── WEB: BADGES ── */
+.badge-wrap { position: relative; display: inline-block; }
+.badge {
+  position: absolute;
+  top: -6px; right: -6px;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+  border: 2px solid white;
+}
+.badge-purple { background: var(--purple); color: white; }
+.badge-pink   { background: var(--pink);   color: white; }
+.badge-gold   { background: var(--gold);   color: var(--purple-deep); }
+.badge-red    { background: #EF4444;       color: white; }
+
+/* ── WEB: INPUTS ── */
+.field-wrap { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 340px; }
+.field-label { font-size: 12px; font-weight: 500; color: var(--ink); }
+.field-label span { color: var(--pink); margin-left: 2px; }
+.field-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field-input::placeholder { color: var(--gray-mid); }
+.field-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(82,6,142,0.12); }
+.field-input.error { border-color: #EF4444; }
+.field-input.error:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.12); }
+.field-hint { font-size: 11px; color: var(--gray-mid); }
+.field-hint.error-hint { color: #EF4444; }
+
+/* Input with icon */
+.field-inner { position: relative; }
+.field-inner .field-input { padding-left: 38px; }
+.field-inner-icon {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-mid);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* ── WEB: TOGGLE / SWITCH ── */
+.toggle-row { display: flex; align-items: center; gap: 12px; }
+.toggle-label-text { font-size: 14px; font-weight: 500; color: var(--ink); cursor: pointer; }
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px; height: 24px;
+  flex-shrink: 0;
+}
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--gray-light);
+  border-radius: 100px;
+  transition: background 0.2s;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  left: 3px; top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle input:checked + .toggle-slider { background: var(--purple); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* ── WEB: PROGRESS ── */
+.progress-wrap { width: 100%; }
+.progress-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.progress-label { font-size: 12px; font-weight: 500; color: var(--ink); }
+.progress-pct   { font-size: 12px; color: var(--gray-mid); }
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-light);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  transition: width 0.6s ease;
+}
+.progress-fill.gold { background: linear-gradient(90deg, #e6ad00, var(--gold)); }
+.progress-fill.green { background: linear-gradient(90deg, #059669, #10B981); }
+
+/* ── WEB: TOOLTIP ── */
+.tooltip-demo { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-end; }
+.tip-anchor { position: relative; display: inline-flex; }
+.tip-target {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--purple);
+  border-bottom: 1.5px dashed var(--purple);
+  cursor: help;
+  padding-bottom: 1px;
+}
+.tip-box {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--purple-deep);
+  color: white;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.tip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--purple-deep);
+}
+.tip-anchor:hover .tip-box { opacity: 1; }
+
+/* ── WEB: CARD VARIANTS ── */
+.ui-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  flex: 1;
+  min-width: 200px;
+  max-width: 260px;
+}
+.ui-card-dark {
+  background: var(--purple-deep);
+  color: white;
+}
+.ui-card-bordered {
+  background: white;
+  border: 1.5px solid var(--gray-light);
+  box-shadow: none;
+}
+.ui-card-accent {
+  background: white;
+  border-top: 4px solid var(--purple);
+  box-shadow: var(--shadow-card);
+}
+.ui-card-gold {
+  background: linear-gradient(135deg, var(--purple-deep) 0%, #3A0660 100%);
+  color: white;
+  border: 1px solid rgba(249,191,0,0.3);
+}
+.ui-card-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 8px;
+}
+.ui-card-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+}
+.ui-card-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+.ui-card-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+.delta-up   { background: rgba(16,185,129,0.15); color: #059669; }
+.delta-down { background: rgba(239,68,68,0.12);  color: #DC2626; }
+
+/* ── WEB: BREADCRUMB ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--purple); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { color: var(--gray-mid); font-size: 11px; }
+.breadcrumb-current { color: var(--gray-mid); }
+
+/* ── WEB: DIVIDER ── */
+.ui-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--gray-mid);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ui-divider::before, .ui-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-light);
+}
+
+/* ── WEB: STEP INDICATOR ── */
+.steps { display: flex; align-items: center; gap: 0; width: 100%; max-width: 500px; }
+.step-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.step-dot-wrap { display: flex; align-items: center; width: 100%; }
+.step-dot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+  z-index: 1;
+  transition: all 0.2s;
+}
+.step-dot.done    { background: var(--purple); color: white; }
+.step-dot.active  { background: var(--purple-deep); color: white; box-shadow: 0 0 0 4px rgba(82,6,142,0.2); }
+.step-dot.pending { background: var(--gray-light); color: var(--gray-mid); }
+.step-line { flex: 1; height: 2px; background: var(--gray-light); }
+.step-line.done { background: var(--purple); }
+.step-label {
+  font-size: 11px; font-weight: 500;
+  color: var(--gray-mid); margin-top: 8px;
+  text-align: center;
+}
+.step-label.active { color: var(--purple); }
+
+/* ── WEB: NOTIFICATION TOAST ── */
+.toast-stack { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 380px; }
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  font-size: 13px;
+  line-height: 1.5;
+  width: 100%;
+}
+.toast-purple { background: var(--purple-deep); color: white; }
+.toast-success { background: white; border-left: 4px solid #10B981; }
+.toast-warning { background: white; border-left: 4px solid var(--gold); }
+.toast-error   { background: white; border-left: 4px solid #EF4444; }
+.toast-icon { font-size: 18px; flex-shrink: 0; }
+.toast-body strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.toast-close {
+  margin-left: auto;
+  background: none; border: none;
+  font-size: 16px; cursor: pointer;
+  opacity: 0.4; flex-shrink: 0;
+  padding: 0 0 0 8px;
+  color: inherit;
+}
+.toast-close:hover { opacity: 0.8; }
+
+/* ── WEB: STAT BAR ── */
+.stat-row { display: flex; gap: 16px; flex-wrap: wrap; width: 100%; }
+.stat-block {
+  flex: 1;
+  min-width: 120px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--purple-deep);
+  line-height: 1;
+}
+.stat-label { font-size: 11px; color: var(--gray-mid); font-weight: 500; margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+.stat-bar-fill { height: 3px; border-radius: 100px; margin-top: 14px; background: linear-gradient(90deg, var(--purple), var(--pink)); }
+
+/* ── SECTION GRID ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 700px) {
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .addendum-cover { padding: 40px 28px; }
+}
+
+/* ────────────────────────────────────────────
+   MOBILE ADDENDUM
+   ──────────────────────────────────────────── */
+
+/* Phone frame */
+.phone-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+.phone-frame {
+  width: 280px;
+  border-radius: 36px;
+  background: var(--purple-deep);
+  padding: 16px;
+  box-shadow: 0 24px 60px rgba(23,4,38,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  flex-shrink: 0;
+  position: relative;
+}
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 16px; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 100px;
+}
+.phone-screen {
+  background: var(--off-white);
+  border-radius: 24px;
+  overflow: hidden;
+  padding-top: 20px;
+}
+.phone-screen.dark { background: var(--purple-deep); }
+
+/* Mobile nav bar */
+.m-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 12px;
+  margin-top: 4px;
+}
+.m-nav-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--purple-deep);
+}
+.m-nav-title.light { color: white; }
+.m-nav-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--purple-mist);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.m-nav-icon.dark-icon { background: rgba(255,255,255,0.1); }
+
+/* Mobile section header */
+.m-section-head {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  padding: 10px 16px 6px;
+}
+
+/* Mobile list row */
+.m-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 1px solid var(--gray-light);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.m-row:hover { background: var(--purple-mist); }
+.m-row:last-child { border-bottom: none; }
+.m-row-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.m-row-icon.purple { background: var(--purple-mist); }
+.m-row-icon.gold   { background: #FEF3C7; }
+.m-row-icon.green  { background: #D1FAE5; }
+.m-row-icon.pink   { background: #FCE7F3; }
+.m-row-body { flex: 1; min-width: 0; }
+.m-row-label { font-size: 14px; font-weight: 500; color: var(--ink); }
+.m-row-sub   { font-size: 11px; color: var(--gray-mid); margin-top: 1px; }
+.m-row-end   { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.m-row-value { font-size: 13px; font-weight: 600; color: var(--purple); }
+.m-chevron   { color: var(--gray-mid); font-size: 12px; }
+
+/* Mobile bottom tab bar */
+.m-tabbar {
+  display: flex;
+  background: white;
+  border-top: 1px solid var(--gray-light);
+  padding: 8px 0 10px;
+}
+.m-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.m-tab-icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  position: relative;
+}
+.m-tab-label { font-size: 10px; font-weight: 500; color: var(--gray-mid); }
+.m-tab.active .m-tab-label { color: var(--purple); }
+.m-tab.active .m-tab-icon  { color: var(--purple); }
+.m-tab-badge {
+  position: absolute;
+  top: -4px; right: -6px;
+  background: var(--pink);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid white;
+}
+
+/* Mobile card */
+.m-card {
+  margin: 12px 12px 0;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(82,6,142,0.08);
+}
+.m-card.dark {
+  background: linear-gradient(135deg, #52068E, #2D0550);
+  color: white;
+}
+.m-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; }
+.m-card-value { font-family: var(--font-display); font-weight: 700; font-size: 26px; margin-top: 4px; }
+.m-card-sub   { font-size: 11px; opacity: 0.6; margin-top: 4px; }
+
+/* Mobile CTA button */
+.m-btn-primary {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 14px 16px;
+  padding: 14px;
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.m-btn-primary:hover { background: var(--purple-light); }
+.m-btn-secondary {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 14px;
+  padding: 13px;
+  background: transparent;
+  color: var(--purple);
+  border: 1.5px solid var(--purple);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.m-btn-gold {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 14px 16px;
+  padding: 14px;
+  background: var(--gold);
+  color: var(--purple-deep);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Mobile pill / tag */
+.m-pills {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.m-pills::-webkit-scrollbar { display: none; }
+.m-pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.m-pill.active  { background: var(--purple); color: white; border-color: var(--purple); }
+.m-pill.default { background: white; color: var(--ink); border-color: var(--gray-light); }
+.m-pill.default:hover { border-color: var(--purple); color: var(--purple); }
+
+/* Mobile search bar */
+.m-search {
+  margin: 8px 12px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.m-search-icon { color: var(--gray-mid); font-size: 15px; }
+.m-search input {
+  border: none; outline: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  flex: 1;
+  background: transparent;
+}
+.m-search input::placeholder { color: var(--gray-mid); }
+
+/* Mobile callout banner */
+.m-banner {
+  margin: 12px 12px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.m-banner.info    { background: var(--purple-mist); color: var(--purple-deep); border-left: 3px solid var(--purple); }
+.m-banner.warning { background: #FFFBEB; color: #78350F; border-left: 3px solid var(--gold); }
+.m-banner.success { background: #ECFDF5; color: #064E3B; border-left: 3px solid #10B981; }
+.m-banner-icon { font-size: 16px; flex-shrink: 0; }
+.m-banner strong { display: block; font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+
+/* Mobile toggle row */
+.m-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background: white;
+  border-bottom: 1px solid var(--gray-light);
+}
+.m-toggle-info { flex: 1; }
+.m-toggle-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.m-toggle-desc  { font-size: 11px; color: var(--gray-mid); margin-top: 2px; }
+
+/* Mobile empty state */
+.m-empty {
+  padding: 32px 16px;
+  text-align: center;
+}
+.m-empty-icon { font-size: 40px; margin-bottom: 12px; }
+.m-empty-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.m-empty-sub   { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
+
+/* Mobile snackbar */
+.m-snackbar {
+  margin: 12px 12px 0;
+  background: var(--purple-deep);
+  color: white;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.m-snackbar-action {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* Spec annotation */
+.spec-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.spec-chip {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  background: var(--off-white);
+  color: var(--gray-mid);
+  border: 1px solid var(--gray-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.spec-chip.purple { background: var(--purple-mist); color: var(--purple); border-color: transparent; }
+</style>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ADDENDUM A: WEB UI                             -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="page" style="padding-top:0;">
+
+  <div class="addendum-cover">
+    <div class="addendum-cover-label">Addendum A</div>
+    <div class="addendum-cover-title">Web UI <span>Components</span></div>
+    <p class="addendum-cover-sub">Production-ready UI elements derived from the AccelOne identity system. Use these specs for web applications, marketing pages, and dashboards.</p>
+  </div>
+
+  <!-- BUTTONS -->
+  <section>
+    <div class="section-label">Calls to Action — Buttons</div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Primary Actions</span>
+        <span class="demo-card-spec">border-radius: 6px</span>
+      </div>
+      <div class="demo-card-body">
+        <button class="btn btn-primary">Book a Call</button>
+        <button class="btn btn-primary btn-lg">Get Started →</button>
+        <button class="btn btn-primary btn-sm">Learn More</button>
+        <button class="btn btn-primary disabled" disabled>Unavailable</button>
+        <button class="btn btn-primary btn-loading" style="min-width:120px;">Loading</button>
+      </div>
+      <div class="demo-notes">
+        Default: <code>padding: 12px 24px · font-weight: 500 · bg: #52068E</code> &nbsp;·&nbsp;
+        Large: <code>padding: 16px 32px · font-size: 16px</code> &nbsp;·&nbsp;
+        Small: <code>padding: 8px 16px · font-size: 12px</code>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Secondary &amp; Variant Actions</span>
+        <span class="demo-card-spec">Multiple weights</span>
+      </div>
+      <div class="demo-card-body">
+        <button class="btn btn-secondary">View Case Study</button>
+        <button class="btn btn-gold">Acceleration Sprint</button>
+        <button class="btn btn-primary-dark">Contact Sales</button>
+        <button class="btn btn-danger">Delete</button>
+        <button class="btn-icon btn" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+      <div class="demo-notes">
+        Gold CTA is reserved for hero moments and primary conversion actions (e.g. Acceleration Sprint). Use sparingly.
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">On Dark Backgrounds</span>
+        <span class="demo-card-spec">bg: #170426</span>
+      </div>
+      <div class="demo-card-body dark-bg">
+        <button class="btn btn-gold">Book a Call</button>
+        <button class="btn btn-ghost-dark">Learn More</button>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <div class="demo-notes">On dark/purple backgrounds, gold is the primary CTA. Ghost and purple variants serve secondary actions.</div>
+    </div>
+  </section>
+
+  <!-- TAGS & PILLS -->
+  <section>
+    <div class="section-label">Tags, Pills &amp; Status Indicators</div>
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Tag Variants</span>
+        <span class="demo-card-spec">border-radius: 100px</span>
+      </div>
+      <div class="demo-card-body" style="flex-wrap:wrap; row-gap:12px;">
+        <span class="tag tag-purple">AI Product</span>
+        <span class="tag tag-purple-solid">Nearshore</span>
+        <span class="tag tag-gold-solid">Featured</span>
+        <span class="tag tag-gold">In Progress</span>
+        <span class="tag tag-pink">Fintech</span>
+        <span class="tag tag-green">✓ Active</span>
+        <span class="tag tag-red">⚠ Overdue</span>
+        <span class="tag tag-gray">Archived</span>
+        <span class="tag tag-outline">Healthcare</span>
+        <span class="tag tag-dot tag-green">Live</span>
+        <span class="tag tag-dot tag-red" style="color:#991B1B;background:#FEE2E2;">Offline</span>
+        <span class="tag tag-dot tag-gold" style="color:#92400E;background:#FEF3C7;">Pending</span>
+        <span class="tag tag-purple-solid tag-removable">Construction <i class="tag-x">✕</i></span>
+        <span class="tag tag-pink tag-removable" style="background:#FCE7F3;color:#9D174D;">Insurance <i class="tag-x">✕</i></span>
+      </div>
+      <div class="demo-notes">
+        Use <code>tag-dot</code> for live status indicators. Removable tags appear in filter/input contexts. Solid variants for primary taxonomy; outlined for secondary.
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUTS -->
+  <section>
+    <div class="section-label">Callouts &amp; Alerts</div>
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Contextual Alerts</span>
+        <span class="demo-card-spec">border-left: 4px solid</span>
+      </div>
+      <div class="demo-card-body" style="flex-direction:column; gap:12px;">
+        <div class="callout callout-info">
+          <span class="callout-icon">💡</span>
+          <div class="callout-content"><strong>Nearshore Advantage</strong>Your AccelOne team operates in U.S. time zones. Real-time collaboration, no lag.</div>
+        </div>
+        <div class="callout callout-success">
+          <span class="callout-icon">✓</span>
+          <div class="callout-content"><strong>Candidate Matched</strong>A senior engineer matching your stack has been identified. Review their profile to proceed.</div>
+        </div>
+        <div class="callout callout-warning">
+          <span class="callout-icon">⚠</span>
+          <div class="callout-content"><strong>Sprint Deadline Approaching</strong>Your Acceleration Sprint review is scheduled in 3 days. Confirm availability with your team.</div>
+        </div>
+        <div class="callout callout-error">
+          <span class="callout-icon">✕</span>
+          <div class="callout-content"><strong>Integration Failed</strong>Unable to connect to your repository. Check your API credentials and try again.</div>
+        </div>
+        <div class="callout callout-dark">
+          <span class="callout-icon">🚀</span>
+          <div class="callout-content"><strong>Acceleration Sprint Available</strong>From idea to impact in weeks — not months. Reserve your sprint window before Q2 closes.</div>
+        </div>
+      </div>
+      <div class="demo-notes">Dark callout reserved for promotional or announcement contexts on light page backgrounds.</div>
+    </div>
+  </section>
+
+  <!-- TOASTS -->
+  <section>
+    <div class="section-label">Notification Toasts</div>
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Toast Variants</span>
+        <span class="demo-card-spec">position: fixed · bottom-right</span>
+      </div>
+      <div class="demo-card-body" style="flex-direction:column; align-items:flex-start;">
+        <div class="toast-stack">
+          <div class="toast toast-purple">
+            <span class="toast-icon">✓</span>
+            <div class="toast-body"><strong>Proposal sent</strong>Your case study request was submitted.</div>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast toast-success">
+            <span class="toast-icon">🎉</span>
+            <div class="toast-body"><strong>Team added</strong>3 engineers joined your project.</div>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast toast-warning">
+            <span class="toast-icon">⚠</span>
+            <div class="toast-body"><strong>Review needed</strong>Candidate profile awaits your approval.</div>
+            <button class="toast-close">✕</button>
+          </div>
+          <div class="toast toast-error">
+            <span class="toast-icon">✕</span>
+            <div class="toast-body"><strong>Upload failed</strong>Max file size is 10MB.</div>
+            <button class="toast-close">✕</button>
+          </div>
+        </div>
+      </div>
+      <div class="demo-notes">Toasts stack from bottom-right with <code>gap: 10px</code>. Auto-dismiss after 4s. Always include a close button.</div>
+    </div>
+  </section>
+
+  <!-- INPUTS -->
+  <section>
+    <div class="section-label">Form Inputs</div>
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <span class="demo-card-title">Input States</span>
+        <span class="demo-card-spec">border-radius: 6px · focus ring: 3px</span>
+      </div>
+      <div class="demo-card-body" style="flex-wrap:wrap; gap:24px; align-items:flex-start;">
+        <div class="field-wrap">
+          <label class="field-label">Work Email <span>*</span></label>
+          <div class="field-inner">
+            <span class="field-inner-icon">✉</span>
+            <input class="field-input" type="email" placeholder="you@company.com">
+          </div>
+          <span class="field-hint">We'll send your proposal here.</span>
+        </div>
+        <div class="field-wrap">
+          <label class="field-label">Company Name <span>*</span></label>
+          <input class="field-input" type="text" value="Acme Corp" style="border-color:var(--purple); box-shadow:0 0 0 3px rgba(82,6,142,0.12);">
+          <span class="field-hint">Focused state</span>
+        </div>
+        <div class="field-wrap">
+          <label class="field-label">Budget Range</label>
+          <input class="field-input error" type="text" value="abc123" placeholder="$500K–$5M">
+          <span class="field-hint error-hint">⚠ Please enter a valid number.</span>
+        </div>
+        <div class="field-wrap">
+          <label class="field-label">Message</label>
+          <input class="field-input" disabled value="Read-only value" style="opacity:0.5;cursor:not-allowed;">
+          <span class="field-hint">Disabled state</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOGGLES / PROGRESS / STEPS -->
+  <section>
+    <div class="section-label">Controls &amp; Progress</div>
+    <div class="two-col">
+      <div class="demo-card">
+        <div class="demo-card-header"><span class="demo-card-title">Toggles</span></div>
+        <div class="demo-card-body" style="flex-direction:column; gap:16px; align-items:flex-start;">
+          <div class="toggle-row">
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            <span class="toggle-label-text">Email notifications</span>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+            <span class="toggle-label-text">SMS alerts</span>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            <span class="toggle-label-text">Weekly digest</span>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-header"><span class="demo-card-title">Progress Bars</span></div>
+        <div class="demo-card-body" style="flex-direction:column; gap:20px; align-items:stretch;">
+          <div class="progress-wrap">
+            <div class="progress-label-row">
+              <span class="progress-label">Sprint Completion</span>
+              <span class="progress-pct">72%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:72%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label-row">
+              <span class="progress-label">Team Onboarded</span>
+              <span class="progress-pct">100%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill green" style="width:100%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label-row">
+              <span class="progress-label">Budget Used</span>
+              <span class="progress-pct">38%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill gold" style="width:38%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card" style="margin-top:16px;">
+      <div class="demo-card-header"><span class="demo-card-title">Step Indicator</span><span class="demo-card-spec">Onboarding / Checkout</span></div>
+      <div class="demo-card-body" style="justify-content:center;">
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-dot-wrap">
+              <div class="step-dot done">✓</div>
+              <div class="step-line done"></div>
+            </div>
+            <span class="step-label">Discovery</span>
+          </div>
+          <div class="step-item">
+            <div class="step-dot-wrap">
+              <div class="step-dot done">✓</div>
+              <div class="step-line done"></div>
+            </div>
+            <span class="step-label">Proposal</span>
+          </div>
+          <div class="step-item">
+            <div class="step-dot-wrap">
+              <div class="step-dot active">3</div>
+              <div class="step-line"></div>
+            </div>
+            <span class="step-label active">Sprint</span>
+          </div>
+          <div class="step-item">
+            <div class="step-dot-wrap">
+              <div class="step-dot pending">4</div>
+              <div class="step-line"></div>
+            </div>
+            <span class="step-label">Launch</span>
+          </div>
+          <div class="step-item">
+            <div class="step-dot-wrap">
+              <div class="step-dot pending">5</div>
+            </div>
+            <span class="step-label">Scale</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT CARDS -->
+  <section>
+    <div class="section-label">Stat Cards &amp; Data Display</div>
+    <div class="demo-card">
+      <div class="demo-card-header"><span class="demo-card-title">Metric Cards</span><span class="demo-card-spec">Dashboard / Reporting</span></div>
+      <div class="demo-card-body" style="align-items:stretch; flex-wrap:wrap;">
+        <div class="ui-card ui-card-accent" style="max-width:none; flex:1; min-width:160px;">
+          <div class="ui-card-label">Retention Rate</div>
+          <div class="ui-card-value">98%</div>
+          <div class="ui-card-delta delta-up">↑ +2% YoY</div>
+          <div class="stat-bar-fill" style="width:98%;margin-top:14px;"></div>
+        </div>
+        <div class="ui-card ui-card-gold" style="max-width:none; flex:1; min-width:160px;">
+          <div class="ui-card-label" style="color:rgba(249,191,0,0.6);">Avg. Hire Time</div>
+          <div class="ui-card-value" style="color:var(--gold);">7 days</div>
+          <div class="ui-card-sub">Industry avg: 42 days</div>
+        </div>
+        <div class="ui-card ui-card-accent" style="border-top-color:var(--pink); max-width:none; flex:1; min-width:160px;">
+          <div class="ui-card-label">Active Projects</div>
+          <div class="ui-card-value">24</div>
+          <div class="ui-card-delta delta-up">↑ 6 new this month</div>
+        </div>
+        <div class="ui-card ui-card-bordered" style="max-width:none; flex:1; min-width:160px;">
+          <div class="ui-card-label">Engineers Placed</div>
+          <div class="ui-card-value">340+</div>
+          <div class="ui-card-delta delta-up">↑ On track</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLTIPS / BREADCRUMB / DIVIDER -->
+  <section>
+    <div class="section-label">Utility Components</div>
+    <div class="two-col">
+      <div class="demo-card">
+        <div class="demo-card-header"><span class="demo-card-title">Tooltips</span><span class="demo-card-spec">Hover to activate</span></div>
+        <div class="demo-card-body" style="flex-direction:column; gap:20px; align-items:flex-start;">
+          <div class="tooltip-demo">
+            <div class="tip-anchor">
+              <span class="tip-target">Nearshore</span>
+              <div class="tip-box">U.S. time zones · Latin America teams<br>Senior-only talent · Cultural fit</div>
+            </div>
+            <div class="tip-anchor">
+              <span class="tip-target">Acceleration Sprint</span>
+              <div class="tip-box">Idea → production in weeks, not months</div>
+            </div>
+            <div class="tip-anchor">
+              <span class="tip-target">Staff Aug</span>
+              <div class="tip-box">Engineers embedded in your team</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-header"><span class="demo-card-title">Breadcrumb &amp; Divider</span></div>
+        <div class="demo-card-body" style="flex-direction:column; gap:24px; align-items:stretch;">
+          <nav class="breadcrumb">
+            <a href="#">Home</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="#">Case Studies</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="#">FinTech</a>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">Kurator Video Search</span>
+          </nav>
+          <div class="ui-divider">or continue with</div>
+          <div class="ui-divider">Section 2</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ADDENDUM B: MOBILE UI                          -->
+<!-- ═══════════════════════════════════════════════ -->
+
+  <div class="addendum-cover" style="margin-top:32px;">
+    <div class="addendum-cover-label">Addendum B</div>
+    <div class="addendum-cover-title">Mobile UI <span>Components</span></div>
+    <p class="addendum-cover-sub">Platform-agnostic patterns for iOS and Android. Touch targets, type scale, and spacing follow human interface and material design minimums.</p>
+  </div>
+
+  <!-- MOBILE: NAV + LIST + TABBAR -->
+  <section>
+    <div class="section-label">Navigation, Lists &amp; Tab Bar</div>
+    <div class="phone-grid">
+
+      <!-- Phone 1: Light dashboard -->
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--gray-mid);margin-bottom:12px;letter-spacing:0.1em;text-transform:uppercase;">Home / Dashboard</div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="m-nav">
+              <div>
+                <div style="font-size:11px;color:var(--gray-mid);font-weight:500;">Good morning,</div>
+                <div class="m-nav-title">Sarah Torres</div>
+              </div>
+              <div class="m-nav-icon">🔔</div>
+            </div>
+
+            <div class="m-card dark">
+              <div class="m-card-label">Active Sprint</div>
+              <div class="m-card-value">Day 12 / 30</div>
+              <div class="m-card-sub">FinTech Platform · 6 engineers</div>
+              <div style="margin-top:12px;height:4px;background:rgba(255,255,255,0.15);border-radius:100px;">
+                <div style="width:40%;height:100%;background:var(--gold);border-radius:100px;"></div>
+              </div>
+            </div>
+
+            <div style="margin:12px 12px 0;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:8px;">Your Team</div>
+            </div>
+            <div class="m-row">
+              <div class="m-row-icon purple">👤</div>
+              <div class="m-row-body">
+                <div class="m-row-label">Ana Martínez</div>
+                <div class="m-row-sub">Senior Engineer · Buenos Aires</div>
+              </div>
+              <div class="m-row-end">
+                <span class="tag tag-green" style="font-size:10px;padding:3px 8px;">Active</span>
+              </div>
+            </div>
+            <div class="m-row">
+              <div class="m-row-icon gold">👤</div>
+              <div class="m-row-body">
+                <div class="m-row-label">Carlos Ruiz</div>
+                <div class="m-row-sub">Lead Designer · Bogotá</div>
+              </div>
+              <div class="m-row-end">
+                <span class="tag tag-green" style="font-size:10px;padding:3px 8px;">Active</span>
+              </div>
+            </div>
+            <div class="m-row">
+              <div class="m-row-icon pink">👤</div>
+              <div class="m-row-body">
+                <div class="m-row-label">Lucia Fernández</div>
+                <div class="m-row-sub">Data Scientist · CDMX</div>
+              </div>
+              <div class="m-row-end">
+                <span class="tag tag-gold" style="font-size:10px;padding:3px 8px;">Review</span>
+              </div>
+            </div>
+
+            <div class="m-tabbar" style="margin-top:12px;">
+              <div class="m-tab active">
+                <div class="m-tab-icon">🏠</div>
+                <div class="m-tab-label">Home</div>
+              </div>
+              <div class="m-tab">
+                <div class="m-tab-icon" style="position:relative;">👥<span class="m-tab-badge">3</span></div>
+                <div class="m-tab-label">Team</div>
+              </div>
+              <div class="m-tab">
+                <div class="m-tab-icon">📋</div>
+                <div class="m-tab-label">Projects</div>
+              </div>
+              <div class="m-tab">
+                <div class="m-tab-icon">⚙</div>
+                <div class="m-tab-label">Settings</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone 2: Dark + CTAs + filters -->
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--gray-mid);margin-bottom:12px;letter-spacing:0.1em;text-transform:uppercase;">Browse / Candidates</div>
+        <div class="phone-frame">
+          <div class="phone-screen dark">
+            <div class="m-nav">
+              <div class="m-nav-icon dark-icon">←</div>
+              <div class="m-nav-title light">Find Engineers</div>
+              <div class="m-nav-icon dark-icon">⋮</div>
+            </div>
+
+            <div class="m-search" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);">
+              <span class="m-search-icon" style="color:rgba(255,255,255,0.4);">🔍</span>
+              <input style="color:white;background:transparent;" placeholder="Search by skill or role..." />
+            </div>
+
+            <div class="m-pills" style="margin-top:8px;">
+              <span class="m-pill active">All</span>
+              <span class="m-pill" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.12);">Backend</span>
+              <span class="m-pill" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.12);">AI/ML</span>
+              <span class="m-pill" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.12);">Design</span>
+              <span class="m-pill" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.12);">Data</span>
+            </div>
+
+            <div style="margin:12px 12px 0;background:rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;">
+              <div style="padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div style="display:flex;gap:12px;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:12px;background:var(--purple-mist);display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div>
+                  <div style="flex:1;">
+                    <div style="font-size:14px;font-weight:600;color:white;">Marcos Silva</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5);">Senior React Engineer · 7 yrs</div>
+                  </div>
+                  <span class="tag tag-gold-solid" style="font-size:10px;">Available</span>
+                </div>
+              </div>
+              <div style="padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div style="display:flex;gap:12px;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:12px;background:#D1FAE5;display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div>
+                  <div style="flex:1;">
+                    <div style="font-size:14px;font-weight:600;color:white;">Valentina López</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5);">ML Engineer · Python · 5 yrs</div>
+                  </div>
+                  <span class="tag tag-purple-solid" style="font-size:10px;">In review</span>
+                </div>
+              </div>
+              <div style="padding:14px 16px;">
+                <div style="display:flex;gap:12px;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:12px;background:#FCE7F3;display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div>
+                  <div style="flex:1;">
+                    <div style="font-size:14px;font-weight:600;color:white;">Diego Morales</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5);">Product Designer · Figma</div>
+                  </div>
+                  <span class="tag tag-green" style="font-size:10px;">Available</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="m-btn-gold" style="margin-top:16px;">Request These Engineers</button>
+
+            <div class="m-tabbar" style="background:rgba(255,255,255,0.05);border-top-color:rgba(255,255,255,0.08);">
+              <div class="m-tab"><div class="m-tab-icon" style="color:rgba(255,255,255,0.4);">🏠</div><div class="m-tab-label" style="color:rgba(255,255,255,0.4);">Home</div></div>
+              <div class="m-tab active"><div class="m-tab-icon" style="color:var(--gold);">🔍</div><div class="m-tab-label" style="color:var(--gold);">Browse</div></div>
+              <div class="m-tab"><div class="m-tab-icon" style="color:rgba(255,255,255,0.4);">📋</div><div class="m-tab-label" style="color:rgba(255,255,255,0.4);">Projects</div></div>
+              <div class="m-tab"><div class="m-tab-icon" style="color:rgba(255,255,255,0.4);">⚙</div><div class="m-tab-label" style="color:rgba(255,255,255,0.4);">Settings</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone 3: Settings + toggles + banners -->
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--gray-mid);margin-bottom:12px;letter-spacing:0.1em;text-transform:uppercase;">Settings / Alerts</div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="m-nav">
+              <div class="m-nav-icon">←</div>
+              <div class="m-nav-title">Notifications</div>
+              <div style="width:32px;"></div>
+            </div>
+
+            <div class="m-banner info">
+              <span class="m-banner-icon">💡</span>
+              <div><strong>Stay in the loop</strong>Get instant updates when a candidate matches your brief.</div>
+            </div>
+
+            <div class="m-banner warning" style="margin-top:8px;">
+              <span class="m-banner-icon">⚠</span>
+              <div><strong>Action needed</strong>2 candidates are awaiting your review.</div>
+            </div>
+
+            <div class="m-section-head" style="margin-top:12px;">Email</div>
+            <div class="m-toggle-row">
+              <div class="m-toggle-info">
+                <div class="m-toggle-title">New candidates</div>
+                <div class="m-toggle-desc">Notify when matches are found</div>
+              </div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="m-toggle-row">
+              <div class="m-toggle-info">
+                <div class="m-toggle-title">Weekly digest</div>
+                <div class="m-toggle-desc">Summary of sprint activity</div>
+              </div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="m-section-head">Push</div>
+            <div class="m-toggle-row">
+              <div class="m-toggle-info">
+                <div class="m-toggle-title">Team messages</div>
+                <div class="m-toggle-desc">Real-time engineer updates</div>
+              </div>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="m-toggle-row" style="border-bottom:none;">
+              <div class="m-toggle-info">
+                <div class="m-toggle-title">Sprint milestones</div>
+                <div class="m-toggle-desc">Key delivery alerts</div>
+              </div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="m-snackbar">
+              <span>✓ Settings saved</span>
+              <button class="m-snackbar-action">Undo</button>
+            </div>
+
+            <div class="m-tabbar" style="margin-top:12px;">
+              <div class="m-tab"><div class="m-tab-icon">🏠</div><div class="m-tab-label">Home</div></div>
+              <div class="m-tab"><div class="m-tab-icon">🔍</div><div class="m-tab-label">Browse</div></div>
+              <div class="m-tab"><div class="m-tab-icon">📋</div><div class="m-tab-label">Projects</div></div>
+              <div class="m-tab active"><div class="m-tab-icon">⚙</div><div class="m-tab-label">Settings</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MOBILE SPECS -->
+  <section>
+    <div class="section-label">Mobile Spec Reference</div>
+    <div class="demo-card">
+      <div class="demo-card-header"><span class="demo-card-title">Touch Targets &amp; Spacing</span><span class="demo-card-spec">Platform agnostic</span></div>
+      <div class="demo-card-body" style="flex-direction:column; gap:16px; align-items:stretch;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+          <div style="background:var(--off-white);border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--purple);">44pt</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:4px;">Min touch target<br>(iOS HIG)</div>
+          </div>
+          <div style="background:var(--off-white);border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--purple);">48dp</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:4px;">Min touch target<br>(Material)</div>
+          </div>
+          <div style="background:var(--off-white);border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--purple);">16px</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:4px;">Screen edge<br>padding</div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px;">Type Scale (Mobile)</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--off-white);border-radius:6px;">
+                <span style="font-weight:700;font-size:18px;color:var(--ink);">Title</span><span class="spec-chip">17px / 600</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--off-white);border-radius:6px;align-items:center;">
+                <span style="font-weight:500;font-size:15px;color:var(--ink);">Body</span><span class="spec-chip">15px / 500</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--off-white);border-radius:6px;align-items:center;">
+                <span style="font-size:14px;color:var(--ink);">Secondary</span><span class="spec-chip">14px / 400</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--off-white);border-radius:6px;align-items:center;">
+                <span style="font-size:12px;color:var(--gray-mid);">Caption</span><span class="spec-chip">11px / 500</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--off-white);border-radius:6px;align-items:center;">
+                <span style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid);">OVERLINE</span><span class="spec-chip">11px / 500</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px;">Radius Scale (Mobile)</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--off-white);border-radius:6px;">
+                <div style="width:48px;height:24px;background:var(--purple);border-radius:4px;"></div>
+                <span class="spec-chip purple">4px — chips</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--off-white);border-radius:6px;">
+                <div style="width:48px;height:24px;background:var(--purple);border-radius:8px;"></div>
+                <span class="spec-chip purple">8px — inputs</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--off-white);border-radius:6px;">
+                <div style="width:48px;height:24px;background:var(--purple);border-radius:12px;"></div>
+                <span class="spec-chip purple">12px — buttons</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--off-white);border-radius:6px;">
+                <div style="width:48px;height:24px;background:var(--purple);border-radius:16px;"></div>
+                <span class="spec-chip purple">16px — cards</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--off-white);border-radius:6px;">
+                <div style="width:48px;height:24px;background:var(--purple);border-radius:100px;"></div>
+                <span class="spec-chip purple">100px — pills</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-notes">
+        All interactive elements must meet <strong>WCAG AA contrast</strong> (4.5:1 for text, 3:1 for UI components).
+        Purple (#52068E) on white = 8.9:1 ✓ &nbsp;·&nbsp; Gold (#F9BF00) on deep purple (#170426) = 9.2:1 ✓ &nbsp;·&nbsp; White on purple = 8.9:1 ✓
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

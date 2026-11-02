@@ -9,15 +9,11 @@ import {
 } from "react"
 import type { DragEvent, ReactNode } from "react"
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  Icon,
-} from "./"
+import { Button } from "./button"
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "./dialog"
+import { Icon } from "./icon"
+import { fieldClassName } from "./input"
+import { Switch } from "./switch"
 import {
   BookOpen,
   Bot,
@@ -116,7 +112,7 @@ export type ComposerInputProps = {
   isSubmitting?: boolean
   isSubmitDisabled?: boolean
   onSubmit: () => void
-  /** Custom className for the submit button (idle state). Default: indigo-500 + w-40 */
+  /** Custom className for the submit button (idle state). Default: brand primary + w-40 */
   submitClassName?: string
 
   // ---- Cancel (turns submit button into a cancel button) ----
@@ -600,7 +596,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
       <div
         className={cn(
           "space-y-3 bg-background px-4 py-4 transition-colors",
-          isComposerDropActive && "bg-cyan-50/70",
+          isComposerDropActive && "bg-accent/70",
           isDisabled && "pointer-events-none opacity-60",
           className
         )}
@@ -659,22 +655,22 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
 
             {/* Drop hint */}
             {isComposerDropActive ? (
-              <div className="rounded-lg border border-dashed border-cyan-400 bg-cyan-50 px-3 py-2 text-sm text-cyan-900">
+              <div className="rounded-lg border border-dashed border-primary/50 bg-secondary px-3 py-2 text-sm text-secondary-foreground">
                 Drop files here to choose a purpose and upload them.
               </div>
             ) : null}
 
             {/* Dictation indicator */}
             {dictationState === "listening" ? (
-              <div className="flex items-center gap-2 rounded-lg border border-dashed border-indigo-400 bg-indigo-50 px-3 py-2 text-sm text-indigo-900">
-                <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-500 animate-pulse" />
+              <div className="flex items-center gap-2 rounded-lg border border-dashed border-highlight/50 bg-highlight-soft px-3 py-2 text-sm text-highlight-soft-foreground">
+                <span className="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-highlight" />
                 Agent is listening...
               </div>
             ) : null}
 
             {/* Microphone permission error */}
             {dictationError === "not-allowed" ? (
-              <div className="rounded-lg border border-dashed border-destructive/50 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+              <div className="rounded-lg border border-dashed border-destructive/50 bg-destructive-soft px-3 py-2 text-sm text-destructive-soft-foreground">
                 Microphone access was denied. If this page is embedded, ensure the iframe includes{" "}
                 <code className="font-mono text-xs">allow=&quot;microphone&quot;</code>.
               </div>
@@ -715,7 +711,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                           <div className="space-y-1">
                             <p className="text-sm font-medium">Purpose</p>
                             <select
-                              className="border-input h-10 w-full rounded-md border bg-background px-3 text-sm"
+                              className={cn(fieldClassName, "h-10 px-3")}
                               value={selectedPurpose}
                               disabled={isDisabled}
                               onChange={(event) => setSelectedPurpose(event.target.value as AttachmentPurpose)}
@@ -735,7 +731,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                             className={cn(
                               "rounded-lg border border-dashed px-4 py-6 text-center transition-colors",
                               isModalDropActive
-                                ? "border-cyan-500 bg-cyan-50 text-cyan-900"
+                                ? "border-primary bg-secondary text-secondary-foreground"
                                 : "border-border bg-muted/30 text-foreground"
                             )}
                             onDragEnter={handleModalDragEnter}
@@ -860,7 +856,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                     variant="ghost"
                     className={cn(
                       "h-8 w-8 p-0",
-                      dictationState === "listening" && "bg-indigo-100 text-indigo-600"
+                      dictationState === "listening" && "bg-highlight-soft text-highlight"
                     )}
                     aria-label={dictationState === "listening" ? "Stop dictation" : "Start dictation"}
                     onClick={handleMicClick}
@@ -885,7 +881,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                       }}
                     >
                       <span className="flex min-w-0 items-center gap-2">
-                        <Icon icon={Cpu} size="sm" className="text-cyan-600" />
+                        <Icon icon={Cpu} size="sm" className="text-primary" />
                         <span className="min-w-0 text-left leading-tight">
                           <span className="block truncate text-xs font-semibold text-foreground">
                             {isLlmModelsLoading ? "Loading models..." : selectedLlmOption.label}
@@ -903,7 +899,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                     </Button>
 
                     {isLlmSelectorOpen ? (
-                      <div className="absolute bottom-10 left-0 z-30 w-80 rounded-xl border border-border bg-background/95 p-1 shadow-2xl backdrop-blur-sm">
+                      <div className="absolute bottom-10 left-0 z-30 w-80 rounded-lg border border-border bg-popover/95 p-1.5 text-popover-foreground shadow-deep backdrop-blur-sm">
                         <div className="mb-1 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                           LLM Model
                         </div>
@@ -916,7 +912,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                                 type="button"
                                 className={cn(
                                   "flex w-full items-start justify-between gap-2 rounded-lg px-2 py-2 text-left transition-colors",
-                                  isSelected ? "bg-cyan-50 text-cyan-950" : "hover:bg-muted/70",
+                                  isSelected ? "bg-accent text-accent-foreground" : "hover:bg-muted/70",
                                   !option.enabled && "opacity-50"
                                 )}
                                 disabled={!option.enabled || isInteractionLocked}
@@ -932,12 +928,12 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                                   <span className="block truncate text-[11px] text-muted-foreground">
                                     {option.provider}
                                   </span>
-                                  <span className="block truncate text-[11px] text-slate-600">
+                                  <span className="block truncate text-[11px] text-muted-foreground">
                                     {option.costLabel}
                                   </span>
                                 </span>
                                 {isSelected ? (
-                                  <Icon icon={Check} size="sm" className="mt-0.5 text-cyan-700" />
+                                  <Icon icon={Check} size="sm" className="mt-0.5 text-primary" />
                                 ) : null}
                               </button>
                             )
@@ -963,9 +959,9 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                       }}
                     >
                       <span className="flex min-w-0 items-center gap-2">
-                        <Icon icon={Globe} size="sm" className={useWeb ? "text-cyan-600" : "text-muted-foreground"} />
-                        <Icon icon={BookOpen} size="sm" className={useKnowledge ? "text-cyan-600" : "text-muted-foreground"} />
-                        <Icon icon={Bot} size="sm" className={useAgentic ? "text-cyan-600" : "text-muted-foreground"} />
+                        <Icon icon={Globe} size="sm" className={useWeb ? "text-primary" : "text-muted-foreground"} />
+                        <Icon icon={BookOpen} size="sm" className={useKnowledge ? "text-primary" : "text-muted-foreground"} />
+                        <Icon icon={Bot} size="sm" className={useAgentic ? "text-primary" : "text-muted-foreground"} />
                         <span className="truncate text-xs font-semibold text-foreground">Sources</span>
                       </span>
                       <Icon
@@ -976,7 +972,7 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                     </Button>
 
                     {isSourcesSelectorOpen ? (
-                      <div className="absolute bottom-10 left-0 z-30 w-80 rounded-xl border border-border bg-background/95 p-1 shadow-2xl backdrop-blur-sm">
+                      <div className="absolute bottom-10 left-0 z-30 w-80 rounded-lg border border-border bg-popover/95 p-1.5 text-popover-foreground shadow-deep backdrop-blur-sm">
                         <div className="mb-1 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                           Sources
                         </div>
@@ -984,94 +980,55 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                           <div className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 hover:bg-muted/70">
                             <div className="min-w-0">
                               <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                                <Icon icon={Globe} size="sm" className="text-cyan-700" />
+                                <Icon icon={Globe} size="sm" className="text-primary" />
                                 Web
                               </div>
                               <p className="mt-0.5 text-[11px] text-muted-foreground">
                                 Search across the entire internet
                               </p>
                             </div>
-                            <button
-                              type="button"
-                              role="switch"
-                              aria-checked={useWeb}
+                            <Switch
+                              checked={useWeb}
+                              onCheckedChange={(checked) => onUseWebChange?.(checked)}
                               aria-label="Use web source"
-                              className={cn(
-                                "relative h-5 w-9 shrink-0 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500",
-                                useWeb ? "bg-cyan-500" : "bg-slate-300"
-                              )}
-                              onClick={() => onUseWebChange?.(!useWeb)}
                               disabled={isInteractionLocked}
-                            >
-                              <span
-                                className={cn(
-                                  "absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform",
-                                  useWeb ? "left-4" : "left-0.5"
-                                )}
-                              />
-                            </button>
+                            />
                           </div>
 
                           <div className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 hover:bg-muted/70">
                             <div className="min-w-0">
                               <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                                <Icon icon={BookOpen} size="sm" className="text-cyan-700" />
+                                <Icon icon={BookOpen} size="sm" className="text-primary" />
                                 Use Knowledge
                               </div>
                               <p className="mt-0.5 text-[11px] text-muted-foreground">
                                 Search into indexed knwoledge base
                               </p>
                             </div>
-                            <button
-                              type="button"
-                              role="switch"
-                              aria-checked={useKnowledge}
+                            <Switch
+                              checked={useKnowledge}
+                              onCheckedChange={(checked) => onUseKnowledgeChange?.(checked)}
                               aria-label="Use knowledge source"
-                              className={cn(
-                                "relative h-5 w-9 shrink-0 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500",
-                                useKnowledge ? "bg-cyan-500" : "bg-slate-300"
-                              )}
-                              onClick={() => onUseKnowledgeChange?.(!useKnowledge)}
                               disabled={isInteractionLocked}
-                            >
-                              <span
-                                className={cn(
-                                  "absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform",
-                                  useKnowledge ? "left-4" : "left-0.5"
-                                )}
-                              />
-                            </button>
+                            />
                           </div>
 
                           <div className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 hover:bg-muted/70">
                             <div className="min-w-0">
                               <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                                <Icon icon={Bot} size="sm" className="text-cyan-700" />
+                                <Icon icon={Bot} size="sm" className="text-primary" />
                                 Agentic
                               </div>
                               <p className="mt-0.5 text-[11px] text-muted-foreground">
                                 Turns the assistant into a researcher. Searches the web and your knowledge base on its own until it has a real answer.
                               </p>
                             </div>
-                            <button
-                              type="button"
-                              role="switch"
-                              aria-checked={useAgentic}
+                            <Switch
+                              checked={useAgentic}
+                              onCheckedChange={(checked) => onUseAgenticChange?.(checked)}
                               aria-label="Use agentic source"
-                              className={cn(
-                                "relative h-5 w-9 shrink-0 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500",
-                                useAgentic ? "bg-cyan-500" : "bg-slate-300"
-                              )}
-                              onClick={() => onUseAgenticChange?.(!useAgentic)}
                               disabled={isInteractionLocked}
-                            >
-                              <span
-                                className={cn(
-                                  "absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform",
-                                  useAgentic ? "left-4" : "left-0.5"
-                                )}
-                              />
-                            </button>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1083,12 +1040,8 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
               {/* Submit / Cancel button */}
               <Button
                 type="button"
-                className={cn(
-                  "text-white",
-                  canCancel
-                    ? "w-40 bg-slate-600 hover:bg-slate-500"
-                    : submitClassName ?? "w-40 bg-indigo-500 hover:bg-indigo-400"
-                )}
+                variant={canCancel ? "dark" : "default"}
+                className={canCancel ? "w-40" : cn("w-40", submitClassName)}
                 onClick={() => {
                   if (canCancel) {
                     onCancel?.()

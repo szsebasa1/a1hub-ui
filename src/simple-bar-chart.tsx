@@ -44,7 +44,7 @@ export function SimpleBarChart({
               </div>
               <div className="h-2 rounded-full bg-muted">
                 <div
-                  className={cn("h-2 rounded-full bg-primary", barClassName)}
+                  className={cn("h-2 rounded-full bg-linear-to-r from-primary to-highlight", barClassName)}
                   style={{ width: `${widthPercent}%` }}
                 />
               </div>

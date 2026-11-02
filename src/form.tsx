@@ -69,20 +69,35 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div className={cn("space-y-2", className)} {...props} />
+      <div className={cn("space-y-1.5", className)} {...props} />
     </FormItemContext.Provider>
   )
 }
 
-function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {
+function FormLabel({
+  className,
+  required = false,
+  children,
+  ...props
+}: React.ComponentProps<typeof LabelPrimitive.Root> & {
+  /** Adds the guide's pink asterisk after the label. */
+  required?: boolean
+}) {
   const { error, formItemId } = useFormField()
 
   return (
     <LabelPrimitive.Root
-      className={cn("text-sm font-medium", error && "text-destructive", className)}
+      className={cn("text-xs font-medium text-foreground", error && "text-destructive", className)}
       htmlFor={formItemId}
       {...props}
-    />
+    >
+      {children}
+      {required ? (
+        <span aria-hidden="true" className="ml-0.5 text-highlight">
+          *
+        </span>
+      ) : null}
+    </LabelPrimitive.Root>
   )
 }
 
@@ -105,7 +120,7 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       id={formDescriptionId}
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-xs text-muted-foreground", className)}
       {...props}
     />
   )
@@ -122,7 +137,7 @@ function FormMessage({ className, children, ...props }: React.ComponentProps<"p"
   return (
     <p
       id={formMessageId}
-      className={cn("text-sm text-destructive", className)}
+      className={cn("text-xs font-medium text-destructive", className)}
       {...props}
     >
       {body}

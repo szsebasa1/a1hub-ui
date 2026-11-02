@@ -1,6 +1,9 @@
-import { Button, Card, CardContent, Icon } from "./"
 import { FileText, Loader2, RotateCcw, Trash2 } from "lucide-react"
 
+import { Button } from "./button"
+import { Card, CardContent } from "./card"
+import { Icon } from "./icon"
+import { Progress } from "./progress"
 import { cn } from "./utils"
 
 export type AttachmentUploadCardAttachment = {
@@ -38,7 +41,7 @@ export function AttachmentUploadCard({ attachment, onRemove, onRetry }: Attachme
           </div>
 
           <div className="flex items-center gap-1">
-            {isUploading ? <Icon icon={Loader2} size="sm" className="animate-spin text-cyan-700" /> : null}
+            {isUploading ? <Icon icon={Loader2} size="sm" className="animate-spin text-primary" /> : null}
             {isFailed ? (
               <Button
                 type="button"
@@ -62,20 +65,16 @@ export function AttachmentUploadCard({ attachment, onRemove, onRetry }: Attachme
           </div>
         </div>
 
-        <div className="h-2 rounded-full bg-muted">
-          <div
-            className={cn(
-              "h-2 rounded-full transition-all",
-              isFailed ? "bg-destructive" : isUploaded ? "bg-emerald-500" : "bg-indigo-500"
-            )}
-            style={{ width: `${attachment.progress}%` }}
-          />
-        </div>
+        <Progress
+          value={attachment.progress}
+          tone={isFailed ? "destructive" : isUploaded ? "success" : "brand"}
+          aria-label={`Upload of ${attachment.fileName}`}
+        />
 
         <p
           className={cn(
             "text-xs",
-            isFailed ? "text-destructive" : isUploaded ? "text-emerald-600" : "text-muted-foreground"
+            isFailed ? "text-destructive" : isUploaded ? "text-success" : "text-muted-foreground"
           )}
         >
           {isFailed

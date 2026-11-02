@@ -1,6 +1,5 @@
+import { Badge } from "./badge"
 import { Card, CardContent, CardHeader, CardTitle } from "./card"
-
-import { cn } from "./utils"
 
 type HealthStatus = {
   service: string
@@ -13,11 +12,11 @@ type StatusListProps = {
   items: HealthStatus[]
 }
 
-const statusStyles: Record<HealthStatus["status"], string> = {
-  healthy: "bg-emerald-500/15 text-emerald-700",
-  degraded: "bg-amber-500/15 text-amber-700",
-  down: "bg-destructive/15 text-destructive",
-}
+const statusVariants = {
+  healthy: "success",
+  degraded: "gold",
+  down: "destructive",
+} as const satisfies Record<HealthStatus["status"], string>
 
 export function StatusList({ title, items }: StatusListProps) {
   return (
@@ -32,14 +31,9 @@ export function StatusList({ title, items }: StatusListProps) {
               <p className="font-medium">{item.service}</p>
               <p className="text-xs text-muted-foreground">{item.detail}</p>
             </div>
-            <span
-              className={cn(
-                "rounded-full px-2 py-0.5 text-xs font-medium uppercase",
-                statusStyles[item.status]
-              )}
-            >
+            <Badge dot variant={statusVariants[item.status]} className="uppercase">
               {item.status}
-            </span>
+            </Badge>
           </div>
         ))}
       </CardContent>

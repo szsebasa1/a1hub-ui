@@ -1,0 +1,235 @@
+/*
+ * AccelOne brand theme for @accelone/a1hub-ui.
+ * Source of truth: docs/accelone-brand-identity.html (palette, Roboto family,
+ * radii, shadows and the web UI components of addendum A).
+ *
+ * Import it from the app's main stylesheet, after Tailwind and its animation
+ * helpers, and drop the app's own token blocks (:root / .dark / @theme):
+ *
+ *   @import "tailwindcss";
+ *   @import "tw-animate-css";
+ *   @import "shadcn/tailwind.css";
+ *   @import "@accelone/a1hub-ui/theme.css";
+ *
+ * Fonts: the app loads Roboto (300, 400, 500, 700) and Roboto Condensed (700)
+ * and exposes them as --font-roboto and --font-roboto-condensed (next/font
+ * `variable`). Without them the stack falls back to an installed Roboto.
+ */
+
+/* Generates the classes the library's components use. */
+@source "./src";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Light theme. Text colors are the guide's, except --muted-foreground: the
+ * guide's Gray Mid (#9490A0) is 3.1:1 on white, so secondary text uses a
+ * darker shade of it that keeps ≥4.5:1 (WCAG AA) on --background and --muted.
+ */
+:root {
+  --background: #f7f7f9;
+  --foreground: #1a1a2e;
+  --heading: #170426;
+  --card: #ffffff;
+  --card-foreground: #1a1a2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a2e;
+  --primary: #52068e;
+  --primary-hover: #6b0daa;
+  --primary-foreground: #ffffff;
+  --secondary: #f3eafb;
+  --secondary-foreground: #52068e;
+  --muted: #efefef;
+  --muted-foreground: #67637a;
+  --accent: #f3eafb;
+  --accent-foreground: #52068e;
+  --highlight: #d4006a;
+  --highlight-soft: #fce7f3;
+  --highlight-soft-foreground: #9d174d;
+  --destructive: #dc2626;
+  --destructive-hover: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fee2e2;
+  --destructive-soft-foreground: #991b1b;
+  --success: #047857;
+  --success-soft: #d1fae5;
+  --success-soft-foreground: #065f46;
+  --warning: #f9bf00;
+  --warning-soft: #fef3c7;
+  --warning-soft-foreground: #92400e;
+  --border: #e6e4eb;
+  --input: #dcd9e3;
+  --ring: #52068e;
+  --tooltip: #170426;
+  --tooltip-foreground: #ffffff;
+  --chart-1: #52068e;
+  --chart-2: #d4006a;
+  --chart-3: #f9bf00;
+  --chart-4: #9490a0;
+  --chart-5: #2d0550;
+  --radius: 0.625rem;
+  --brand-shadow-card: 0 2px 20px rgb(74 6 128 / 0.08);
+  --brand-shadow-deep: 0 8px 40px rgb(74 6 128 / 0.16);
+  /* The sidebar is Deep Purple in both themes, with the white logo. */
+  --sidebar: #170426;
+  --sidebar-foreground: #e4dcec;
+  --sidebar-primary: #52068e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2d0550;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.08);
+  --sidebar-ring: #b98af0;
+}
+
+/*
+ * Dark theme, built from the same palette: Deep Purple background, Purple Mid
+ * surfaces. Brand Purple is too dark to read on them, so primary becomes a
+ * lifted violet carrying Deep Purple text (7.3:1 both ways).
+ */
+.dark {
+  --background: #170426;
+  --foreground: #f2edf7;
+  --heading: #ffffff;
+  --card: #22053b;
+  --card-foreground: #f2edf7;
+  --popover: #2d0550;
+  --popover-foreground: #f2edf7;
+  --primary: #b98af0;
+  --primary-hover: #cdaaf5;
+  --primary-foreground: #170426;
+  --secondary: #2d0550;
+  --secondary-foreground: #d9c2f7;
+  --muted: #2d0550;
+  --muted-foreground: #b3a7c4;
+  --accent: #3a0a63;
+  --accent-foreground: #f2edf7;
+  --highlight: #ff5fa8;
+  --highlight-soft: rgb(212 0 106 / 0.2);
+  --highlight-soft-foreground: #ffa3cf;
+  --destructive: #f87171;
+  --destructive-hover: #fca5a5;
+  --destructive-foreground: #170426;
+  --destructive-soft: rgb(248 113 113 / 0.16);
+  --destructive-soft-foreground: #fca5a5;
+  --success: #34d399;
+  --success-soft: rgb(16 185 129 / 0.16);
+  --success-soft-foreground: #6ee7b7;
+  --warning: #f9bf00;
+  --warning-soft: rgb(249 191 0 / 0.14);
+  --warning-soft-foreground: #fcd34d;
+  --border: rgb(255 255 255 / 0.1);
+  --input: rgb(255 255 255 / 0.18);
+  --ring: #b98af0;
+  --tooltip: #3a0a63;
+  --tooltip-foreground: #ffffff;
+  --chart-1: #b98af0;
+  --chart-2: #ff5fa8;
+  --chart-3: #f9bf00;
+  --chart-4: #b3a7c4;
+  --chart-5: #e4d4fa;
+  --brand-shadow-card: 0 2px 20px rgb(0 0 0 / 0.35);
+  --brand-shadow-deep: 0 8px 40px rgb(0 0 0 / 0.5);
+  --sidebar: #0e0218;
+  --sidebar-foreground: #e4dcec;
+  --sidebar-primary: #52068e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #22053b;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.08);
+  --sidebar-ring: #b98af0;
+}
+
+/* The guide's palette, the same in both themes: for surfaces that are always
+   branded (dark cards, the gold CTA, gradients). */
+@theme {
+  --color-brand-deep: #170426;
+  --color-brand-mid: #2d0550;
+  --color-brand-purple: #52068e;
+  --color-brand-light: #6b0daa;
+  --color-brand-mist: #f3eafb;
+  --color-brand-pink: #d4006a;
+  --color-brand-gold: #f9bf00;
+  --color-brand-gold-hover: #e6ad00;
+  --color-brand-ink: #1a1a2e;
+  --color-brand-gray: #9490a0;
+}
+
+@theme inline {
+  --font-sans: var(--font-roboto, "Roboto"), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-roboto-condensed, "Roboto Condensed"), var(--font-roboto, "Roboto"),
+    ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+  --color-highlight-soft-foreground: var(--highlight-soft-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-destructive-soft-foreground: var(--destructive-soft-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-foreground: var(--warning-soft-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-tooltip: var(--tooltip);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Guide: tags 100px, inputs and buttons 6px, cards, callouts and toasts 10px. */
+  --radius-sm: calc(var(--radius) * 0.4);
+  --radius-md: calc(var(--radius) * 0.6);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.2);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-3xl: calc(var(--radius) * 1.8);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --shadow-card: var(--brand-shadow-card);
+  --shadow-deep: var(--brand-shadow-deep);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
