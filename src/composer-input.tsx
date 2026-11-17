@@ -4,6 +4,7 @@ import {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react"
@@ -171,6 +172,8 @@ export type ComposerInputProps = {
   /** Agentic mode — when enabled the backend orchestrates web + knowledge automatically. */
   useAgentic?: boolean
   onUseAgenticChange?: (value: boolean) => void
+  /** Rendered at the bottom of the Sources menu (e.g. a department picker). */
+  sourcesFooter?: ReactNode
 
   // ---- Loading overlay ----
   /**
@@ -182,6 +185,13 @@ export type ComposerInputProps = {
   // ---- Focus ----
   /** Auto-focus the textarea on mount (multi-frame strategy). Default: false */
   autoFocusOnMount?: boolean
+
+  // ---- Size ----
+  /**
+   * The textarea starts one line tall and grows with its content up to its
+   * usual height (7rem), then scrolls. Default: false (fixed 7rem).
+   */
+  autoGrow?: boolean
 }
 
 // ---------------------------------------------------------------------------
@@ -232,8 +242,10 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
       onUseKnowledgeChange,
       useAgentic = false,
       onUseAgenticChange,
+      sourcesFooter,
       loadingOverlay,
       autoFocusOnMount = false,
+      autoGrow = false,
     },
     ref
   ) {
@@ -307,6 +319,16 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
         window.clearTimeout(timeoutId)
       }
     }, [autoFocusOnMount])
+
+    // ---- Auto-grow: fit the textarea to its content (capped by max-h-28) ----
+    useLayoutEffect(() => {
+      if (!autoGrow) return
+      const node = textareaRef.current
+      if (!node) return
+      node.style.height = "auto"
+      const borders = node.offsetHeight - node.clientHeight
+      node.style.height = `${node.scrollHeight + borders}px`
+    }, [autoGrow, value])
 
     // ---- Speech support detection ----
     useEffect(() => {
@@ -649,6 +671,8 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
               value={value}
               placeholder={placeholder}
               disabled={isBodyDisabled}
+              rows={autoGrow ? 1 : undefined}
+              className={autoGrow ? "max-h-28 min-h-0 resize-none overflow-y-auto" : undefined}
               onSubmitShortcut={handleSubmitShortcut}
               onChange={(event: any) => onChange(event.target.value)}
             />
@@ -1031,6 +1055,11 @@ export const ComposerInput = forwardRef<ComposerInputHandle, ComposerInputProps>
                             />
                           </div>
                         </div>
+                        {sourcesFooter ? (
+                          <div className="mt-1 border-t border-border px-2 pt-2 pb-1">
+                            {sourcesFooter}
+                          </div>
+                        ) : null}
                       </div>
                     ) : null}
                   </div>

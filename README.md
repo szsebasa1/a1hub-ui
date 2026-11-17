@@ -162,7 +162,7 @@ The guide's Gray Mid (`#9490A0`) is 3.1:1 on white, so `muted-foreground` uses a
 
 | Component | Description |
 |---|---|
-| `ComposerInput` | Rich chat composer with file attachments, audio, model/source selection, and submit |
+| `ComposerInput` | Rich chat composer with file attachments, audio, model/source selection, and submit. `autoGrow` starts the textarea one line tall and grows it with the text up to 7rem; `sourcesFooter` adds a node at the bottom of the Sources menu |
 | `AttachmentUploadCard` | Upload progress card for a single file attachment |
 
 ### Feedback
